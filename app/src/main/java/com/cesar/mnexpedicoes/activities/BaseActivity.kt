@@ -10,6 +10,7 @@ import com.cesar.mnexpedicoes.fragments.events.EventsFragment
 import com.cesar.mnexpedicoes.fragments.home.HomeFragment
 import com.cesar.mnexpedicoes.fragments.more.MoreFragment
 
+
 class BaseActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivityBaseBinding.inflate(layoutInflater) }
@@ -41,4 +42,5 @@ class BaseActivity : AppCompatActivity() {
             .replace(R.id.fcv_fragment_container, fragment)
             .commit()
     }
+
 }

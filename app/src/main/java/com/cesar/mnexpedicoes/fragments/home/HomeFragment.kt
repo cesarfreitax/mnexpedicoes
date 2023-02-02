@@ -5,11 +5,15 @@ import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResult
+import androidx.fragment.app.setFragmentResultListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
+import com.cesar.mnexpedicoes.R
+import com.cesar.mnexpedicoes.activities.event.EventDetailsFragment
 import com.cesar.mnexpedicoes.databinding.CellEventBinding
 import com.cesar.mnexpedicoes.databinding.FragmentHomeBinding
 import com.cesar.mnexpedicoes.fragments.home.adapter.ViewPagerAdapter
@@ -21,17 +25,12 @@ import io.github.enicolas.genericadapter.AdapterHolderType
 import io.github.enicolas.genericadapter.adapter.GenericRecyclerAdapter
 import io.github.enicolas.genericadapter.adapter.GenericRecylerAdapterDelegate
 
-
 class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
     private val adapter = GenericRecyclerAdapter()
     private val trips = mutableListOf<TripResponse>()
     private val events = mutableListOf<EventResponse>()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -92,6 +91,13 @@ class HomeFragment : Fragment() {
 
             override fun didSelectItemAtIndex(adapter: GenericRecyclerAdapter, index: Int) {
                 super.didSelectItemAtIndex(adapter, index)
+                val fragment = EventDetailsFragment()
+                val transaction = parentFragmentManager.beginTransaction()
+                transaction.addToBackStack(null)
+                val bundle = Bundle()
+                bundle.putSerializable("event", events[index])
+                fragment.arguments = bundle
+                transaction.replace(R.id.fcv_fragment_container, fragment).commit()
             }
         }
 
