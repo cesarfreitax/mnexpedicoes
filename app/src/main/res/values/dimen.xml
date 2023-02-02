@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="txt_tiny_1">10sp</dimen>
+    <dimen name="txt_tiny_2">11sp</dimen>
+    <dimen name="txt_tiny_3">12sp</dimen>
+    <dimen name="txt_small_1">14sp</dimen>
+    <dimen name="txt_small_2">15sp</dimen>
+    <dimen name="txt_small_3">16sp</dimen>
+    <dimen name="txt_medium_1">18sp</dimen>
+    <dimen name="txt_medium_2">19sp</dimen>
+    <dimen name="txt_medium_3">20sp</dimen>
+    <dimen name="txt_large_1">24</dimen>
+    <dimen name="txt_large_2">25sp</dimen>
+    <dimen name="txt_large_3">26sp</dimen>
+</resources>
