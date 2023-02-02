@@ -4,4 +4,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="trip">Trip</string>
+    <string name="available">Disponível</string>
+    <string name="warning_tickets">Poucas vagas!</string>
+    <string name="sold_out">Esgotado</string>
+    <string name="full_schedule">Agenda completa</string>
 </resources>
