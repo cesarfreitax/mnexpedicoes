@@ -363,8 +363,8 @@ fun Button.enableButton(value: Boolean) {
 fun ImageView.load(url: String?, context:Context){
     Glide.with(context)
         .load(url?:"")
-//        .placeholder(R.drawable.loading_image)
-//        .error(R.drawable.no_image)
+        .placeholder(R.drawable.beige_gradient_background)
+        .error(R.drawable.pink_gradient_background)
         .into(this)
 }
 

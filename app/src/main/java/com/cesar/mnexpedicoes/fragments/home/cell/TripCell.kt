@@ -1,6 +1,6 @@
 package com.cesar.mnexpedicoes.fragments.home.cell
 
-import android.content.Context
+import androidx.fragment.app.Fragment
 import com.cesar.mnexpedicoes.databinding.CellTripBinding
 import com.cesar.mnexpedicoes.fragments.home.model.TripResponse
 import com.cesar.mnexpedicoes.utils.getMonthString
@@ -10,8 +10,7 @@ import io.github.enicolas.genericadapter.adapter.BaseCell
 class TripCell(private val viewBinding: CellTripBinding) : BaseCell(viewBinding.root) {
 
     private var formattedDateTxt = ""
-
-    fun setupCell(trip: TripResponse, context: Context) {
+    fun setupCell(trip: TripResponse, fragment: Fragment) {
         viewBinding.txtTripTitle.text = trip.title
         val startDateSplitted = trip.startDate?.split("/")!!.toList()
         val endDateSplitted = trip.endDate?.split("/")!!.toList()
@@ -31,9 +30,10 @@ class TripCell(private val viewBinding: CellTripBinding) : BaseCell(viewBinding.
         }
 
         viewBinding.txtTripDate.text = formattedDateTxt
-        viewBinding.imgTrip.load(trip.img, context)
-    }
+        val img = trip.img
+        viewBinding.imgTrip.load(img, fragment.requireContext())
 
+    }
 
 }
 
