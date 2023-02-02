@@ -385,3 +385,22 @@ fun getMonthString(n: String) : String {
         else -> "?"
     }
 }
+
+fun String.formatDateEvent(): String {
+    val dateSplitted = this.split("/")
+    return when (dateSplitted[1]) {
+        "01" -> "${dateSplitted[0]} de Janeiro"
+        "02" -> "${dateSplitted[0]} de Fevereiro"
+        "03" -> "${dateSplitted[0]} de Março"
+        "04" -> "${dateSplitted[0]} de Abril"
+        "05" -> "${dateSplitted[0]} de Maio"
+        "06" -> "${dateSplitted[0]} de Junho"
+        "07" -> "${dateSplitted[0]} de Julho"
+        "08" -> "${dateSplitted[0]} de Agosto"
+        "09" -> "${dateSplitted[0]} de Setembro"
+        "10" -> "${dateSplitted[0]} de Outubro"
+        "11" -> "${dateSplitted[0]} de Novembro"
+        "12" -> "${dateSplitted[0]} de Dezembro"
+        else -> "?"
+    }
+}

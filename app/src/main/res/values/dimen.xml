@@ -9,7 +9,7 @@
     <dimen name="txt_medium_1">18sp</dimen>
     <dimen name="txt_medium_2">19sp</dimen>
     <dimen name="txt_medium_3">20sp</dimen>
-    <dimen name="txt_large_1">24</dimen>
+    <dimen name="txt_large_1">24sp</dimen>
     <dimen name="txt_large_2">25sp</dimen>
     <dimen name="txt_large_3">26sp</dimen>
 </resources>
