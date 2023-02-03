@@ -16,9 +16,7 @@
             @android:color/transparent
         </item>
 
-        <item name="android:windowLightStatusBar">
-            true
-        </item>
-
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:fontFamily">@font/montserrat</item>
     </style>
 </resources>

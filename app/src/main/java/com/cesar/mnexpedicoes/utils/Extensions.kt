@@ -1,5 +1,6 @@
 package com.cesar.mnexpedicoes.utils
 
+import android.animation.ValueAnimator
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
@@ -11,6 +12,8 @@ import android.os.Build
 import android.text.Html
 import android.text.Spanned
 import android.view.View
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.ImageView
@@ -404,3 +407,17 @@ fun String.formatDateEvent(): String {
         else -> "?"
     }
 }
+
+fun animateAlpha(view: View) {
+    ValueAnimator.ofFloat(0f, 1f).apply {
+        duration = 400
+        addUpdateListener {
+            view.alpha = it.animatedValue as Float
+        }
+    }.start()
+}
+
+fun animateDirection(up: Boolean = false, down: Boolean = false, context: Context) : Animation {
+    return if (up) AnimationUtils.loadAnimation(context, R.anim.scale_up) else AnimationUtils.loadAnimation(context, R.anim.scale_down)
+}
+
