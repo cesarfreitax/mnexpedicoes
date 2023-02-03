@@ -8,4 +8,8 @@
     <string name="warning_tickets">Poucas vagas!</string>
     <string name="sold_out">Esgotado</string>
     <string name="full_schedule">Agenda completa</string>
+    <string name="event_photo">Event photo</string>
+    <string name="blurred_event_photo">Blurred event photo</string>
+    <string name="included">O que está incluso?</string>
+    <string name="not_included">O que não está incluso?</string>
 </resources>

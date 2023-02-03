@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/eventDetailsFragment"
-        android:name="com.cesar.mnexpedicoes.activities.event.EventDetailsFragment"
+        android:name="com.cesar.mnexpedicoes.fragments.events.EventDetailsFragment"
         android:label="fragment_event_details"
         tools:layout="@layout/fragment_event_details" >
         <argument

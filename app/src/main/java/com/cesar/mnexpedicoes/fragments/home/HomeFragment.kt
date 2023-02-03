@@ -5,15 +5,12 @@ import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.setFragmentResult
-import androidx.fragment.app.setFragmentResultListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.cesar.mnexpedicoes.R
-import com.cesar.mnexpedicoes.activities.event.EventDetailsFragment
+import com.cesar.mnexpedicoes.fragments.events.EventDetailsFragment
 import com.cesar.mnexpedicoes.databinding.CellEventBinding
 import com.cesar.mnexpedicoes.databinding.FragmentHomeBinding
 import com.cesar.mnexpedicoes.fragments.home.adapter.ViewPagerAdapter
@@ -85,7 +82,7 @@ class HomeFragment : Fragment() {
             ) {
                 (cell as EventCell).let { c ->
                     val event = events[position]
-                    c.setupCell(event, this@HomeFragment, position + 1 == events.size)
+                    c.setupCell(event, this@HomeFragment)
                 }
             }
 
@@ -115,11 +112,10 @@ class HomeFragment : Fragment() {
 
         events.addAll(
             listOf(
-                EventResponse(id = 1, title = "Roberto Carlos", date = "10/03/2023", img = "https://veja.abril.com.br/wp-content/uploads/2022/06/ROBERTO-CARLOS-1248.jpg?quality=70&strip=info&w=733&resize=1200,800", status = "available", location = "Vivo Rio"),
-                EventResponse(id = 2, title = "Alcione", date = "05/04/2023", img = "https://diariodorio.com/wp-content/uploads/2022/10/Alcione-2019-PROMO-AO-VIVO-fotos-@MarcosHermes-4-1-1.jpg", status = "warning", location = "Espaço Ribalta"),
-                EventResponse(id = 3, title = "Elvis Experience", date = "20/06/2023", img = "https://journalmetro.com/wp-content/uploads/2022/08/CreditNathalieLemelin-CourtoisieLCQProductions.jpg?resize=1051%2C591", status = "available", location = "Teatro das Artes"),
-                EventResponse(id = 4, title = "Roupa Nova", date = "30/08/2023", img = "https://i0.statig.com.br/bancodeimagens/4u/in/vm/4uinvm448ru9lhs5521avfy4f.jpg", status = "soldout", location = "Jeunesse Arena"),
-                EventResponse()
+                EventResponse(id = 1, title = "Roberto Carlos", date = "10/03/2023", img = "https://veja.abril.com.br/wp-content/uploads/2022/06/ROBERTO-CARLOS-1248.jpg?quality=70&strip=info&w=733&resize=1200,800", status = "available", location = "Vivo Rio", hour = "16:00", description = "Em suas últimas edições, o projeto foi considerado o mais buscado da folia nacional em São Paulo e fora da internet o público fez jus aos números: todas as apresentações tiveram seus ingressos esgotados. Com repertório sempre cheio de novidades que passa por sucessos de Olodum, Banda Eva, Ara Ketu, Daniela Mercury, Gilberto Gil, Caetano Veloso, Novos Baianos e Ivete Sangalo, o Bloco do Silva chega mais uma vez a Salvador com convidados especiais pra todo mundo dançar e cantar junto do começo ao fim.", included = arrayListOf("Transporte porta a porta", "Fotografia", "Guia", "Guia Auxiliar"), notIncluded = arrayListOf("Extras de qualquer natureza", "Bebidas alcoólicas")),
+                EventResponse(id = 2, title = "Alcione", date = "05/04/2023", img = "https://diariodorio.com/wp-content/uploads/2022/10/Alcione-2019-PROMO-AO-VIVO-fotos-@MarcosHermes-4-1-1.jpg", status = "warning", location = "Espaço Ribalta", hour = "16:00", description = "Em suas últimas edições, o projeto foi considerado o mais buscado da folia nacional em São Paulo e fora da internet o público fez jus aos números: todas as apresentações tiveram seus ingressos esgotados. Com repertório sempre cheio de novidades que passa por sucessos de Olodum, Banda Eva, Ara Ketu, Daniela Mercury, Gilberto Gil, Caetano Veloso, Novos Baianos e Ivete Sangalo, o Bloco do Silva chega mais uma vez a Salvador com convidados especiais pra todo mundo dançar e cantar junto do começo ao fim.", included = arrayListOf("Transporte porta a porta", "Fotografia", "Guia", "Guia Auxiliar"), notIncluded = arrayListOf("Extras de qualquer natureza", "Bebidas alcoólicas")),
+                EventResponse(id = 3, title = "Elvis Experience", date = "20/06/2023", img = "https://journalmetro.com/wp-content/uploads/2022/08/CreditNathalieLemelin-CourtoisieLCQProductions.jpg?resize=1051%2C591", status = "available", location = "Teatro das Artes", hour = "16:00", description = "Em suas últimas edições, o projeto foi considerado o mais buscado da folia nacional em São Paulo e fora da internet o público fez jus aos números: todas as apresentações tiveram seus ingressos esgotados. Com repertório sempre cheio de novidades que passa por sucessos de Olodum, Banda Eva, Ara Ketu, Daniela Mercury, Gilberto Gil, Caetano Veloso, Novos Baianos e Ivete Sangalo, o Bloco do Silva chega mais uma vez a Salvador com convidados especiais pra todo mundo dançar e cantar junto do começo ao fim.", included = arrayListOf("Transporte porta a porta", "Fotografia", "Guia", "Guia Auxiliar"), notIncluded = arrayListOf("Extras de qualquer natureza", "Bebidas alcoólicas")),
+                EventResponse(id = 4, title = "Roupa Nova", date = "30/08/2023", img = "https://i0.statig.com.br/bancodeimagens/4u/in/vm/4uinvm448ru9lhs5521avfy4f.jpg", status = "soldout", location = "Jeunesse Arena", hour = "16:00", description = "Em suas últimas edições, o projeto foi considerado o mais buscado da folia nacional em São Paulo e fora da internet o público fez jus aos números: todas as apresentações tiveram seus ingressos esgotados. Com repertório sempre cheio de novidades que passa por sucessos de Olodum, Banda Eva, Ara Ketu, Daniela Mercury, Gilberto Gil, Caetano Veloso, Novos Baianos e Ivete Sangalo, o Bloco do Silva chega mais uma vez a Salvador com convidados especiais pra todo mundo dançar e cantar junto do começo ao fim.", included = arrayListOf("Transporte porta a porta", "Fotografia", "Guia", "Guia Auxiliar"), notIncluded = arrayListOf("Extras de qualquer natureza", "Bebidas alcoólicas")),
             )
         )
     }
