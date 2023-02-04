@@ -4,13 +4,17 @@ import java.io.Serializable
 
 class EventResponse(
     val id: Int? = 0,
+    val type: String? = "",
     val title: String? = "",
     val date: String? = "",
+    val startDate: String? = "",
+    val endDate: String? = "",
     val hour: String? = "",
     val img: String? = "",
     val status: String? = "available",
-    val location: String? = "",
+    val location: ArrayList<String>? = arrayListOf(),
     val description: String? = "",
-    val included: MutableList<String>? = arrayListOf(),
-    val notIncluded: MutableList<String>? = arrayListOf()
+    val included: ArrayList<String>? = arrayListOf(),
+    val notIncluded: ArrayList<String>? = arrayListOf(),
+    val tickets: ArrayList<Ticket>? = arrayListOf()
 ) : Serializable

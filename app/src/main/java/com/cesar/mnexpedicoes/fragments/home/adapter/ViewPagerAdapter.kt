@@ -8,13 +8,13 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.cesar.mnexpedicoes.R
-import com.cesar.mnexpedicoes.fragments.home.model.TripResponse
+import com.cesar.mnexpedicoes.fragments.home.model.EventResponse
 import com.cesar.mnexpedicoes.utils.Constants
-import com.cesar.mnexpedicoes.utils.getMonthString
+import com.cesar.mnexpedicoes.utils.formatDate
 import com.cesar.mnexpedicoes.utils.load
 import com.google.android.material.card.MaterialCardView
 
-class ViewPagerAdapter(var trips: List<TripResponse>, private val fragment: Fragment) :
+class ViewPagerAdapter(private var trips: MutableList<EventResponse>, private val fragment: Fragment) :
     RecyclerView.Adapter<ViewPagerAdapter.PageViewHolder>() {
 
     private var formattedDateTxt = ""
@@ -53,13 +53,11 @@ class ViewPagerAdapter(var trips: List<TripResponse>, private val fragment: Frag
         statusTxt: TextView,
         title: TextView,
         date: TextView,
-        trip: TripResponse,
+        trip: EventResponse,
         fragment: Fragment
     ) {
         title.text = trip.title
-        val startDateSplitted = trip.startDate?.split("/")!!.toList()
-        val endDateSplitted = trip.endDate?.split("/")!!.toList()
-        formatDate(startDateSplitted, endDateSplitted)
+        formattedDateTxt = formatDate(trip.startDate.toString(), trip.endDate.toString())
         date.text = formattedDateTxt
         img.load(trip.img, fragment.requireContext())
         setStatus(trip.status!!, statusCdv, statusTxt, fragment)
@@ -74,35 +72,18 @@ class ViewPagerAdapter(var trips: List<TripResponse>, private val fragment: Frag
         when (statusString) {
             Constants.AVAILABLE -> {
                 statusCdv.setCardBackgroundColor(fragment.context?.getColorStateList(R.color.green_available))
-                statusTxt.text = fragment.requireContext().getString(R.string.available)
+                statusTxt.text = fragment.requireContext().getString(R.string.generic_available)
             }
             Constants.WARNING -> {
                 statusCdv.setCardBackgroundColor(fragment.context?.getColorStateList(R.color.yellow_warning))
-                statusTxt.text = fragment.requireContext().getString(R.string.warning_tickets)
+                statusTxt.text = fragment.requireContext().getString(R.string.generic_warning_tickets)
             }
             Constants.SOLD_OUT -> {
                 statusCdv.setCardBackgroundColor(fragment.context?.getColorStateList(R.color.red_sold_out))
-                statusTxt.text = fragment.requireContext().getString(R.string.sold_out)
+                statusTxt.text = fragment.requireContext().getString(R.string.generic_sold_out)
             }
         }
     }
 
-    private fun formatDate(
-        startDateSplitted: List<String>,
-        endDateSplitted: List<String>
-    ) {
-        formattedDateTxt = if (startDateSplitted[1] == endDateSplitted[1]) {
-            "De ${startDateSplitted[0]} a ${endDateSplitted[0]} de ${
-                getMonthString(
-                    startDateSplitted[1]
-                )
-            }"
-        } else {
-            "De ${startDateSplitted[0]} de ${getMonthString(startDateSplitted[1])} a ${endDateSplitted[0]} de ${
-                getMonthString(
-                    startDateSplitted[1]
-                )
-            }"
-        }
-    }
+
 }
