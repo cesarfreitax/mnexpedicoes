@@ -1,15 +1,39 @@
 <resources>
+
+    <!--  App  -->
     <string name="app_name">mnexpedicoes</string>
-    <string name="logo">Logo</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="trip">Trip</string>
-    <string name="available">Disponível</string>
-    <string name="warning_tickets">Poucas vagas!</string>
-    <string name="sold_out">Esgotado</string>
-    <string name="full_schedule">Agenda completa</string>
-    <string name="event_photo">Event photo</string>
-    <string name="blurred_event_photo">Blurred event photo</string>
-    <string name="included">O que está incluso?</string>
-    <string name="not_included">O que não está incluso?</string>
+    <string name="app_logo">Logo</string>
+
+    <!--  Generic  -->
+    <string name="generic_available">Disponível</string>
+    <string name="generic_full_schedule">Agenda completa</string>
+    <string name="generic_sold_out">Esgotado</string>
+    <string name="generic_warning_tickets">Poucas vagas!</string>
+    <string name="generic_included">O que está incluso?</string>
+    <string name="generic_not_included">O que não está incluso?</string>
+    <string name="generic_ticket">Ingressos</string>
+    <string name="generic_full_price">Inteira</string>
+    <string name="generic_half_price">Meia</string>
+    <string name="generic_price">Valor</string>
+
+    <!--  Event  -->
+    <string name="event_photo">Foto do evento</string>
+    <string name="event_photo_blurred">Foto do evento borrada como background</string>
+    <string name="event_description">Descrição do evento</string>
+
+    <!--  Trip  -->
+    <string name="trip_description">Descrição da viagem</string>
+    <string name="trip_trip">Trip</string>
+    <string name="trip_installments_msg"><u>Parcele sua viagem em até %s!</u></string>
+
+
+    <!--  Checkout  -->
+    <string name="checkout_buy_whatsapp">Comprar pelo whatsapp</string>
+    <string name="checkout_buy_app">Pague pelo app</string>
+    <string name="checkout_new_method_soon">Estamos trabalhando para em breve disponibilizar pagamento pelo app! =)</string>
+    <string name="generic_ticket_price">R$ %s</string>
+    <string name="event_next_events">Próximos eventos</string>
+    <string name="generic_slogan_message_1">Passear é bom demais...</string>
+    <string name="generic_slogan_message_2">Com a MN é ainda melhor!</string>
+
 </resources>

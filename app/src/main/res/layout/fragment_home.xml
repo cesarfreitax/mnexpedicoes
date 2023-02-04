@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -42,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:text="Próximos eventos"
+            android:text="@string/event_next_events"
             android:drawablePadding="4dp"
             android:textSize="@dimen/txt_medium_1"
             android:textColor="@color/black"
@@ -84,7 +83,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/montserrat_bold"
-                    android:text="Passear é bom demais..."
+                    android:text="@string/generic_slogan_message_1"
                     android:textAlignment="center"
                     android:textColor="@color/green_available"
                     android:textSize="@dimen/txt_large_1" />
@@ -93,7 +92,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/montserrat"
-                    android:text="Com a MN é ainda melhor!"
+                    android:text="@string/generic_slogan_message_2"
                     android:textAlignment="center"
                     android:textColor="@color/white"
                     android:textSize="@dimen/txt_large_1" />
@@ -113,7 +112,7 @@
                         android:drawablePadding="4dp"
                         android:fontFamily="@font/montserrat_bold"
                         android:gravity="center"
-                        android:text="@string/full_schedule"
+                        android:text="@string/generic_full_schedule"
                         android:textColor="@color/black"
                         app:drawableEndCompat="@drawable/ic_arrow_right"
                         app:drawableTint="@color/black" />

@@ -14,7 +14,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:src="@drawable/noronha"
         android:scaleType="centerCrop"
-        android:contentDescription="@string/trip" />
+        android:contentDescription="@string/trip_trip" />
 
         <com.google.android.material.card.MaterialCardView
             android:layout_height="wrap_content"

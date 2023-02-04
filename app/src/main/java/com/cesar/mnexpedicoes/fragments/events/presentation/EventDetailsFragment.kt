@@ -1,4 +1,4 @@
-package com.cesar.mnexpedicoes.fragments.events
+package com.cesar.mnexpedicoes.fragments.events.presentation
 
 import android.graphics.RenderEffect
 import android.graphics.Shader
@@ -11,10 +11,14 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cesar.mnexpedicoes.R
+import com.cesar.mnexpedicoes.activities.main.presentation.MainActivity
 import com.cesar.mnexpedicoes.databinding.CellItemIncludedBinding
+import com.cesar.mnexpedicoes.databinding.CellTicketBinding
 import com.cesar.mnexpedicoes.databinding.FragmentEventDetailsBinding
 import com.cesar.mnexpedicoes.fragments.events.cell.ItemIncludedCell
+import com.cesar.mnexpedicoes.fragments.events.cell.TicketCell
 import com.cesar.mnexpedicoes.fragments.home.model.EventResponse
+import com.cesar.mnexpedicoes.fragments.home.model.Ticket
 import com.cesar.mnexpedicoes.utils.*
 import io.github.enicolas.genericadapter.AdapterHolderType
 import io.github.enicolas.genericadapter.adapter.GenericRecyclerAdapter
@@ -25,37 +29,50 @@ class EventDetailsFragment : Fragment() {
     private lateinit var binding: FragmentEventDetailsBinding
     private val adapterIncluded = GenericRecyclerAdapter()
     private val adapterNotIncluded = GenericRecyclerAdapter()
+    private val adapterTickets = GenericRecyclerAdapter()
     private var included = mutableListOf<String>()
     private var notIncluded = mutableListOf<String>()
+    private var tickets = mutableListOf<Ticket>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_event_details, container, false)
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val event = arguments?.getSerializable("event") as? EventResponse ?: EventResponse()
         binding = FragmentEventDetailsBinding.bind(view)
+        val event = arguments?.getSerializable("event") as? EventResponse ?: EventResponse()
+        setupFragmentView(event)
+        setupRecyclerViewIncluded(event)
+        setupRecyclerViewNotIncluded(event)
+        setupRecyclerViewTickets(event)
+        setupButtons()
+    }
+
+    private fun setupFragmentView(event: EventResponse) {
         binding.imgEvent.load(event.img, requireContext())
-        binding.imgEventBlur.setRenderEffect(RenderEffect.createBlurEffect(50f, 50f, Shader.TileMode.MIRROR))
+        binding.imgEventBlur.setRenderEffect(
+            RenderEffect.createBlurEffect(
+                50f,
+                50f,
+                Shader.TileMode.MIRROR
+            )
+        )
         binding.imgEventBlur.load(event.img, requireContext())
         binding.txtEventTitle.text = event.title
-        binding.txtEventDate.text = event.date?.formatDateEvent()
-        binding.txtEventLocation.text = event.location
+        if (event.type == "trip") {
+            binding.txtEventDate.text = formatDate(event.startDate.toString(), event.endDate.toString())
+            val locationsJoined = event.location?.joinToString(", ")
+            binding.txtEventLocation.text = locationsJoined
+        } else {
+            binding.txtEventDate.text = "${event.date?.formatDateEvent()} • "
+            binding.txtEventHour.text = event.hour
+            binding.txtEventLocation.text = event.location?.first()
+        }
         binding.txtEventDescription.text = event.description
-        included = event.included!!
-        setupRecyclerViewIncluded()
-        notIncluded = event.notIncluded!!
-        setupRecyclerViewNotIncluded()
-        setupButtons()
     }
 
     private fun setupButtons() {
@@ -149,7 +166,8 @@ class EventDetailsFragment : Fragment() {
         }
     }
 
-    private fun setupRecyclerViewIncluded() {
+    private fun setupRecyclerViewIncluded(event: EventResponse) {
+        included = event.included!!
         val layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding.rcvIncluded.layoutManager = layoutManager
         binding.rcvIncluded.adapter = adapterIncluded
@@ -157,12 +175,22 @@ class EventDetailsFragment : Fragment() {
         adapterIncluded.snapshot?.snapshotList = included
     }
 
-    private fun setupRecyclerViewNotIncluded() {
+    private fun setupRecyclerViewNotIncluded(event: EventResponse) {
+        notIncluded = event.notIncluded!!
         val layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding.rcvNotIncluded.layoutManager = layoutManager
         binding.rcvNotIncluded.adapter = adapterNotIncluded
         adapterNotIncluded.delegate = recyclerViewDelegateNotIncluded
         adapterNotIncluded.snapshot?.snapshotList = notIncluded
+    }
+
+    private fun setupRecyclerViewTickets(event: EventResponse) {
+        tickets = event.tickets!!
+        val layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        binding.rcvTickets.layoutManager = layoutManager
+        binding.rcvTickets.adapter = adapterTickets
+        adapterTickets.delegate = recyclerViewDelegateTickets
+        adapterTickets.snapshot?.snapshotList = tickets
     }
 
     private var recyclerViewDelegateIncluded =
@@ -228,4 +256,44 @@ class EventDetailsFragment : Fragment() {
                 super.didSelectItemAtIndex(adapter, index)
             }
         }
+
+    private var recyclerViewDelegateTickets =
+        object : GenericRecylerAdapterDelegate {
+
+            override fun numberOfRows(adapter: GenericRecyclerAdapter): Int = tickets.size
+
+            override fun registerCellAtPosition(
+                adapter: GenericRecyclerAdapter,
+                position: Int
+            ): AdapterHolderType {
+                return AdapterHolderType(
+                    viewBinding = CellTicketBinding::class.java,
+                    clazz = TicketCell::class.java,
+                    reuseIdentifier = 0
+                )
+            }
+
+            override fun cellForPosition(
+                adapter: GenericRecyclerAdapter,
+                cell: RecyclerView.ViewHolder,
+                position: Int
+            ) {
+                (cell as TicketCell).let { c ->
+                    val ticket = tickets[position]
+                    c.setupCell(ticket, position == 0, this@EventDetailsFragment)
+                }
+            }
+
+            override fun didSelectItemAtIndex(adapter: GenericRecyclerAdapter, index: Int) {
+                super.didSelectItemAtIndex(adapter, index)
+            }
+        }
+
+    override fun onStart() {
+        super.onStart()
+        (requireActivity() as MainActivity).apply {
+            bottomBarHidden = true
+            backBtnVisible = true
+        }
+    }
 }

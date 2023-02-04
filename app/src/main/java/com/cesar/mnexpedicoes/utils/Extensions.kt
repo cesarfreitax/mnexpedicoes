@@ -115,18 +115,21 @@ fun View.toggleVisibility(visible: Boolean = false) {
     visibility = if (visible) View.VISIBLE else View.GONE
 }
 
-fun View.toggleVisibility(visible: Boolean = false, isGone:Boolean = true) {
+fun View.toggleVisibility(visible: Boolean = false, isGone: Boolean = true) {
     visibility =
         if (visible) View.VISIBLE
-        else if(!visible && !isGone) View.INVISIBLE
+        else if (!visible && !isGone) View.INVISIBLE
         else View.GONE
 }
 
 fun View.disable() {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
         background.colorFilter =
-            BlendModeColorFilterCompat.createBlendModeColorFilterCompat(Color.GRAY, BlendModeCompat.MULTIPLY)
-    }else{
+            BlendModeColorFilterCompat.createBlendModeColorFilterCompat(
+                Color.GRAY,
+                BlendModeCompat.MULTIPLY
+            )
+    } else {
         background.setColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY)
     }
     isEnabled = false
@@ -136,6 +139,7 @@ fun View.enable() {
     background.colorFilter = null
     isEnabled = true
 }
+
 fun View.isVisible(): Boolean {
     if (!isShown) {
         return false
@@ -156,20 +160,20 @@ fun TextView.makeUnderlined() {
     paintFlags = paintFlags or Paint.UNDERLINE_TEXT_FLAG
 }
 
-fun TextView.makeBold(){
+fun TextView.makeBold() {
     setTypeface(typeface, Typeface.BOLD)
 }
 
-fun TextView.makeRegular(){
+fun TextView.makeRegular() {
     setTypeface(typeface, Typeface.NORMAL)
 }
 
 fun TextView.makeSemiBold() {
-    val semiBoldTypeface = ResourcesCompat.getFont(context,R.font.montserrat_semibold)
+    val semiBoldTypeface = ResourcesCompat.getFont(context, R.font.montserrat_semibold)
     typeface = semiBoldTypeface
 }
 
-fun TextView.makeNormal(){
+fun TextView.makeNormal() {
     setTypeface(Typeface.create(typeface, Typeface.NORMAL), Typeface.NORMAL)
 }
 
@@ -287,14 +291,10 @@ fun Fragment.showSafeSnackBar(message: Int, type: SnackBarType) {
 }
 
 
-
-
-
-
 fun Fragment.openBrowserWith(url: String?) {
     val i = Intent(Intent.ACTION_VIEW)
     var completeURL = url ?: ""
-    if(!completeURL.startsWith("https://") && !completeURL.startsWith("http://")){
+    if (!completeURL.startsWith("https://") && !completeURL.startsWith("http://")) {
         completeURL = "https://$completeURL"
     }
     i.data = Uri.parse(completeURL)
@@ -341,12 +341,13 @@ fun Context.hideKeyboard(view: View) {
 
 fun View.showKeyboard() {
     this.requestFocus()
-    val inputMethodManager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    val inputMethodManager =
+        context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     inputMethodManager.showSoftInput(this, InputMethodManager.SHOW_IMPLICIT)
 }
 
-fun<T> MutableLiveData<ArrayList<T>>.addAllValue(newlist: List<T>){
-    val list = this.value?: arrayListOf()
+fun <T> MutableLiveData<ArrayList<T>>.addAllValue(newlist: List<T>) {
+    val list = this.value ?: arrayListOf()
     list.addAll(newlist)
     this.value = list
 }
@@ -363,15 +364,15 @@ fun Button.enableButton(value: Boolean) {
 
 }
 
-fun ImageView.load(url: String?, context:Context){
+fun ImageView.load(url: String?, context: Context) {
     Glide.with(context)
-        .load(url?:"")
+        .load(url ?: "")
         .placeholder(R.drawable.beige_gradient_background)
         .error(R.drawable.pink_gradient_background)
         .into(this)
 }
 
-fun getMonthString(n: String) : String {
+fun getMonthString(n: String): String {
     return when (n) {
         "01" -> "Janeiro"
         "02" -> "Fevereiro"
@@ -408,6 +409,27 @@ fun String.formatDateEvent(): String {
     }
 }
 
+fun formatDate(
+    startDate: String,
+    endDate: String
+): String {
+    val startDateSplitted = startDate.split("/").toList()
+    val endDateSplitted = endDate.split("/").toList()
+    return if (startDateSplitted[1] == endDateSplitted[1]) {
+        "De ${startDateSplitted[0]} a ${endDateSplitted[0]} de ${
+            getMonthString(
+                startDateSplitted[1]
+            )
+        }"
+    } else {
+        "De ${startDateSplitted[0]} de ${getMonthString(startDateSplitted[1])} a ${endDateSplitted[0]} de ${
+            getMonthString(
+                startDateSplitted[1]
+            )
+        }"
+    }
+}
+
 fun animateAlpha(view: View) {
     ValueAnimator.ofFloat(0f, 1f).apply {
         duration = 400
@@ -417,7 +439,10 @@ fun animateAlpha(view: View) {
     }.start()
 }
 
-fun animateDirection(up: Boolean = false, down: Boolean = false, context: Context) : Animation {
-    return if (up) AnimationUtils.loadAnimation(context, R.anim.scale_up) else AnimationUtils.loadAnimation(context, R.anim.scale_down)
+fun animateDirection(up: Boolean = false, down: Boolean = false, context: Context): Animation {
+    return if (up) AnimationUtils.loadAnimation(
+        context,
+        R.anim.scale_up
+    ) else AnimationUtils.loadAnimation(context, R.anim.scale_down)
 }
 

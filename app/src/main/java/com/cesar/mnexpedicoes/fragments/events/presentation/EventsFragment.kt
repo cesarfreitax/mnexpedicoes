@@ -1,4 +1,4 @@
-package com.cesar.mnexpedicoes.fragments.events
+package com.cesar.mnexpedicoes.fragments.events.presentation
 
 import android.os.Bundle
 import android.view.LayoutInflater
