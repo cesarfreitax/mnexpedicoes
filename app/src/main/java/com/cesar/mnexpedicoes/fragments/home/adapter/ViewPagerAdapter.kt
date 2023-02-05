@@ -1,20 +1,23 @@
 package com.cesar.mnexpedicoes.fragments.home.adapter
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cesar.mnexpedicoes.R
+import com.cesar.mnexpedicoes.fragments.events.presentation.EventDetailsFragment
 import com.cesar.mnexpedicoes.fragments.home.model.EventResponse
 import com.cesar.mnexpedicoes.utils.Constants
 import com.cesar.mnexpedicoes.utils.formatDate
 import com.cesar.mnexpedicoes.utils.load
 import com.google.android.material.card.MaterialCardView
 
-class ViewPagerAdapter(private var trips: MutableList<EventResponse>, private val fragment: Fragment) :
+class ViewPagerAdapter(private var trips: MutableList<EventResponse>, private val parentFragmentManager: FragmentManager, private val fragment: Fragment) :
     RecyclerView.Adapter<ViewPagerAdapter.PageViewHolder>() {
 
     private var formattedDateTxt = ""
@@ -61,6 +64,15 @@ class ViewPagerAdapter(private var trips: MutableList<EventResponse>, private va
         date.text = formattedDateTxt
         img.load(trip.img, fragment.requireContext())
         setStatus(trip.status!!, statusCdv, statusTxt, fragment)
+        img.setOnClickListener {
+            val frag = EventDetailsFragment()
+            val transaction = parentFragmentManager.beginTransaction()
+            transaction.addToBackStack(null)
+            val bundle = Bundle()
+            bundle.putSerializable("event", trip)
+            frag.arguments = bundle
+            transaction.replace(R.id.fcv_fragment_container, frag).commit()
+        }
     }
 
     private fun setStatus(
