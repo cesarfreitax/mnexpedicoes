@@ -58,7 +58,7 @@
                 android:textAlignment="center"
                 android:textSize="@dimen/txt_medium_1"
                 android:fontFamily="@font/montserrat_bold"
-                android:textColor="@color/darkPink"
+                android:textColor="@color/pink_dark"
                 tools:text="Fernando de Noronha"/>
 
             <TextView

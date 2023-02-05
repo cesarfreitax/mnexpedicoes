@@ -25,7 +25,6 @@ class ViewPagerAdapter(private var trips: MutableList<EventResponse>, private va
     class PageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val img: ImageView = itemView.findViewById(R.id.img_trip)
         val statusCdv: MaterialCardView = itemView.findViewById(R.id.cdv_status)
-        val statusTxt: TextView = itemView.findViewById(R.id.txt_status)
         val title: TextView = itemView.findViewById(R.id.txt_trip_title)
         val date: TextView = itemView.findViewById(R.id.txt_trip_date)
     }
@@ -42,7 +41,6 @@ class ViewPagerAdapter(private var trips: MutableList<EventResponse>, private va
         setupCell(
             img = holder.img,
             statusCdv = holder.statusCdv,
-            statusTxt = holder.statusTxt,
             title = holder.title,
             date = holder.date,
             trip = trips[position],
@@ -53,7 +51,6 @@ class ViewPagerAdapter(private var trips: MutableList<EventResponse>, private va
     private fun setupCell(
         img: ImageView,
         statusCdv: MaterialCardView,
-        statusTxt: TextView,
         title: TextView,
         date: TextView,
         trip: EventResponse,
@@ -63,7 +60,7 @@ class ViewPagerAdapter(private var trips: MutableList<EventResponse>, private va
         formattedDateTxt = formatDate(trip.startDate.toString(), trip.endDate.toString())
         date.text = formattedDateTxt
         img.load(trip.img, fragment.requireContext())
-        setStatus(trip.status!!, statusCdv, statusTxt, fragment)
+        setStatus(trip.status!!, statusCdv, fragment)
         img.setOnClickListener {
             val frag = EventDetailsFragment()
             val transaction = parentFragmentManager.beginTransaction()
@@ -78,21 +75,17 @@ class ViewPagerAdapter(private var trips: MutableList<EventResponse>, private va
     private fun setStatus(
         statusString: String,
         statusCdv: MaterialCardView,
-        statusTxt: TextView,
         fragment: Fragment
     ) {
         when (statusString) {
             Constants.AVAILABLE -> {
                 statusCdv.setCardBackgroundColor(fragment.context?.getColorStateList(R.color.green_available))
-                statusTxt.text = fragment.requireContext().getString(R.string.generic_available)
             }
             Constants.WARNING -> {
                 statusCdv.setCardBackgroundColor(fragment.context?.getColorStateList(R.color.yellow_warning))
-                statusTxt.text = fragment.requireContext().getString(R.string.generic_warning_tickets)
             }
             Constants.SOLD_OUT -> {
                 statusCdv.setCardBackgroundColor(fragment.context?.getColorStateList(R.color.red_sold_out))
-                statusTxt.text = fragment.requireContext().getString(R.string.generic_sold_out)
             }
         }
     }

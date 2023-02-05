@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="green">#A9C661</color>
-    <color name="darkGreen">#7BA513</color>
+    <color name="green_dark">#7BA513</color>
     <color name="pink">#DE4973</color>
-    <color name="darkPink">#AE244B</color>
+    <color name="pink_dark">#AE244B</color>
+    <color name="pink_light">#de8ea0</color>
     <color name="black">#FF000000</color>
     <color name="beige">#EADDC2</color>
     <color name="grey">#7C7C7C</color>
-    <color name="off_white">#ECECEC</color>
+    <color name="white_off">#ECECEC</color>
     <color name="white">#FDFDFC</color>
+    <color name="blue_pool">#4bbcb3</color>
+    <color name="blue">#179bfc</color>
 
-    <color name="green_available">#CDFF52</color>
+    <color name="green_available">#86DC3D</color>
     <color name="yellow_warning">#FFEB3B</color>
     <color name="red_sold_out">#E91E1E</color>
 </resources>

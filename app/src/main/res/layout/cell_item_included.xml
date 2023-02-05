@@ -13,7 +13,7 @@
         app:drawableStartCompat="@drawable/ic_check"
         android:drawablePadding="4dp"
         android:gravity="center"
-        app:drawableTint="@color/darkGreen"
+        app:drawableTint="@color/green_dark"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

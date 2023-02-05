@@ -61,7 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="32dp"
             android:layout_marginTop="16dp"
-            app:cardBackgroundColor="@color/darkPink"
+            app:cardBackgroundColor="@color/pink_dark"
             app:cardCornerRadius="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -123,7 +123,7 @@
                     android:textColor="@color/black"
                     android:textSize="@dimen/txt_medium_1"
                     app:drawableStartCompat="@drawable/ic_calendar"
-                    app:drawableTint="@color/darkGreen"
+                    app:drawableTint="@color/green_dark"
                     tools:text="14 de Abril até 01 de Maio• " />
 
             <TextView
@@ -134,7 +134,7 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/txt_medium_1"
                 app:drawableStartCompat="@drawable/ic_location"
-                app:drawableTint="@color/darkGreen"
+                app:drawableTint="@color/green_dark"
                 tools:text="Maranhão e Piauí" />
 
             <TextView
@@ -156,7 +156,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="32dp"
             android:layout_marginTop="8dp"
-            app:cardBackgroundColor="@color/darkPink"
+            app:cardBackgroundColor="@color/pink_dark"
             app:cardCornerRadius="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -212,7 +212,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="32dp"
             android:layout_marginTop="8dp"
-            app:cardBackgroundColor="@color/darkPink"
+            app:cardBackgroundColor="@color/pink_dark"
             app:cardCornerRadius="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -319,12 +319,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:textColor="@color/darkGreen"
+                        android:textColor="@color/green_dark"
                         android:text="@string/trip_installments_msg"
                         app:drawableStartCompat="@drawable/ic_credit_card"
                         android:drawablePadding="4dp"
                         android:gravity="center"
-                        app:drawableTint="@color/darkGreen" />
+                        app:drawableTint="@color/green_dark" />
 
                 </LinearLayout>
 

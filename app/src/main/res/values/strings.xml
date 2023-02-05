@@ -15,11 +15,16 @@
     <string name="generic_full_price">Inteira</string>
     <string name="generic_half_price">Meia</string>
     <string name="generic_price">Valor</string>
+    <string name="generic_filter_image">Imagem do filtro</string>
+    <string name="generic_slogan_message_1">Passear é bom demais...</string>
+    <string name="generic_slogan_message_2">Com a MN é ainda melhor!</string>
+    <string name="generic_ticket_price">R$ %s</string>
 
     <!--  Event  -->
     <string name="event_photo">Foto do evento</string>
     <string name="event_photo_blurred">Foto do evento borrada como background</string>
     <string name="event_description">Descrição do evento</string>
+    <string name="event_next_events">Próximos eventos</string>
 
     <!--  Trip  -->
     <string name="trip_description">Descrição da viagem</string>
@@ -31,9 +36,13 @@
     <string name="checkout_buy_whatsapp">Comprar pelo whatsapp</string>
     <string name="checkout_buy_app">Pague pelo app</string>
     <string name="checkout_new_method_soon">Estamos trabalhando para em breve disponibilizar pagamento pelo app! =)</string>
-    <string name="generic_ticket_price">R$ %s</string>
-    <string name="event_next_events">Próximos eventos</string>
-    <string name="generic_slogan_message_1">Passear é bom demais...</string>
-    <string name="generic_slogan_message_2">Com a MN é ainda melhor!</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--  Schedule  -->
+    <string name="schedule_event_type">Escolha o tipo de passeio</string>
+    <string name="generic_filtering_for"><u>Filtrando por %s</u></string>
+
 
 </resources>

@@ -3,15 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    tools:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:layout_height="match_parent"
+    tools:background="@color/white_off">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cdv_event_container"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         app:cardCornerRadius="10dp"
-        android:layout_marginStart="16dp"
-        app:cardBackgroundColor="@color/beige"
+        app:cardBackgroundColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -31,22 +33,11 @@
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cdv_status"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:layout_margin="0.1dp"
                     app:cardBackgroundColor="@color/green_available"
                     app:cardCornerRadius="30dp">
-
-                    <TextView
-                        android:id="@+id/txt_status"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="8dp"
-                        android:layout_marginVertical="2dp"
-                        android:fontFamily="@font/montserrat_semibold"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/txt_tiny_1"
-                        tools:text="Disponível" />
 
                 </com.google.android.material.card.MaterialCardView>
 
@@ -71,35 +62,35 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginVertical="8dp"
+                android:layout_marginStart="16dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/img_event">
+
+                <TextView
+                    android:id="@+id/txt_event_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:textColor="@color/pink"
+                    android:textSize="@dimen/txt_small_3"
+                    tools:text="Sab, 18 Fev • 20:00" />
 
                 <TextView
                     android:id="@+id/txt_event_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/montserrat_bold"
-                    android:textAlignment="center"
-                    android:textColor="@color/darkPink"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="4dp"
                     android:textSize="@dimen/txt_medium_1"
                     tools:text="Roberto Carlos" />
-
-                <TextView
-                    android:id="@+id/txt_event_date"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/txt_small_3"
-                    tools:text="10 de Março" />
 
                 <TextView
                     android:id="@+id/txt_event_location"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/montserrat"
-                    android:textAlignment="center"
+                    android:layout_marginTop="4dp"
                     android:textSize="@dimen/txt_small_1"
                     tools:text="Vivo Rio" />
 
