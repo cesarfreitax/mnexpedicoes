@@ -47,7 +47,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupViewPagerAdapter() {
-        binding.vpgTrips.adapter = ViewPagerAdapter(trips, this@HomeFragment)
+        binding.vpgTrips.adapter = ViewPagerAdapter(trips, parentFragmentManager, this@HomeFragment)
         binding.wdiDots.attachTo(binding.vpgTrips)
         autoSlider(binding.vpgTrips)
     }

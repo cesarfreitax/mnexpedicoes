@@ -112,6 +112,7 @@
                 android:fontFamily="@font/montserrat_black"
                 android:textColor="@color/black"
                 android:textSize="@dimen/txt_medium_3"
+                android:textAlignment="center"
                 tools:text="Roberto Carlos" />
 
             <LinearLayout
@@ -147,7 +148,7 @@
                 android:id="@+id/txt_event_location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="@dimen/txt_medium_1"
                 app:drawableStartCompat="@drawable/ic_location"
