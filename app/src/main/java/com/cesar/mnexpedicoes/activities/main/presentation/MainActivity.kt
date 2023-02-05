@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.cesar.mnexpedicoes.R
 import com.cesar.mnexpedicoes.databinding.ActivityMainBinding
-import com.cesar.mnexpedicoes.fragments.events.presentation.EventsFragment
+import com.cesar.mnexpedicoes.fragments.schedule.presentation.ScheduleFragment
 import com.cesar.mnexpedicoes.fragments.home.HomeFragment
 import com.cesar.mnexpedicoes.fragments.more.MoreFragment
 import com.cesar.mnexpedicoes.utils.toggleVisibility
@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
 
         val homeFragment = HomeFragment()
-        val eventsFragment = EventsFragment()
+        val scheduleFragment = ScheduleFragment()
         val moreFragment = MoreFragment()
 
         loadFragment(homeFragment)
@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         binding.bnvMenu.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.home -> loadFragment(homeFragment)
-                R.id.events -> loadFragment(eventsFragment)
+                R.id.schedule -> loadFragment(scheduleFragment)
                 R.id.more -> loadFragment(moreFragment)
             }
             true

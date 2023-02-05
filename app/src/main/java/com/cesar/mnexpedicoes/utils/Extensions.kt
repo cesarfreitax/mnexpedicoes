@@ -20,6 +20,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.ColorRes
+import androidx.compose.ui.text.toUpperCase
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.BlendModeColorFilterCompat
@@ -35,6 +36,7 @@ import com.cesar.mnexpedicoes.R
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
 import java.text.Normalizer
+import java.text.SimpleDateFormat
 import java.util.*
 
 private const val SIZE_OF_FULL_HEX_COLOR = 7
@@ -357,7 +359,7 @@ fun Button.enableButton(value: Boolean) {
     this.setTextColor(if (value) Color.WHITE else Color.GRAY)
     val buttonDrawable = DrawableCompat.wrap(this.background)
     DrawableCompat.setTint(
-        buttonDrawable, if (value) this.resources.getColor(R.color.darkPink)
+        buttonDrawable, if (value) this.resources.getColor(R.color.pink_dark)
         else Color.DKGRAY
     )
     this.background = buttonDrawable
@@ -374,20 +376,31 @@ fun ImageView.load(url: String?, context: Context) {
 
 fun getMonthString(n: String): String {
     return when (n) {
-        "01" -> "Janeiro"
-        "02" -> "Fevereiro"
-        "03" -> "Março"
-        "04" -> "Abril"
-        "05" -> "Maio"
-        "06" -> "Junho"
-        "07" -> "Julho"
-        "08" -> "Agosto"
-        "09" -> "Setembro"
-        "10" -> "Outubro"
-        "11" -> "Novembro"
-        "12" -> "Dezembro"
+        "01" -> "Jan"
+        "02" -> "Fev"
+        "03" -> "Mar"
+        "04" -> "Abr"
+        "05" -> "Mai"
+        "06" -> "Jun"
+        "07" -> "Jul"
+        "08" -> "Ago"
+        "09" -> "Set"
+        "10" -> "Out"
+        "11" -> "Nov"
+        "12" -> "Dez"
         else -> "?"
     }
+}
+
+fun getDayOfWeekBr(dateString: String) : String {
+    val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale("pt", "BR"))
+    val date = dateFormat.parse(dateString)
+    val calendar = Calendar.getInstance(Locale("pt", "BR"))
+    calendar.time = date!!
+    val dayName = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale("pt", "BR"))
+    val splittedDayName = dayName?.substring(0,3)?.split("")?.toMutableList()!!
+    splittedDayName[1] = splittedDayName[1].uppercase()
+    return splittedDayName.joinToString("")
 }
 
 fun String.formatDateEvent(): String {

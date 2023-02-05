@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:background="@color/white_off">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -46,7 +47,7 @@
             android:textSize="@dimen/txt_medium_1"
             android:textColor="@color/black"
             android:fontFamily="@font/montserrat_bold"
-            app:drawableTint="@color/darkPink"
+            app:drawableTint="@color/pink_dark"
             app:drawableStartCompat="@drawable/ic_calendar" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -62,7 +63,7 @@
             android:id="@+id/ctl_full_schedule"
             android:layout_width="0dp"
             android:layout_height="200dp"
-            android:background="@color/darkPink"
+            android:background="@color/pink_dark"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"

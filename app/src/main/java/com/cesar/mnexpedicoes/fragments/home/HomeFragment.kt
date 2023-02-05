@@ -83,7 +83,7 @@ class HomeFragment : Fragment() {
             ) {
                 (cell as EventCell).let { c ->
                     val event = events[position]
-                    c.setupCell(event, this@HomeFragment)
+                    c.setupCell(event, this@HomeFragment, isFirstCell = position == 0)
                 }
             }
 

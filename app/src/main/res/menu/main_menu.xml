@@ -5,9 +5,9 @@
         android:id="@+id/home"
         android:icon="@drawable/ic_home"/>
 
-    <item android:title="Eventos"
-        android:id="@+id/events"
-        android:icon="@drawable/ic_star"/>
+    <item android:title="Agenda"
+        android:id="@+id/schedule"
+        android:icon="@drawable/ic_calendar"/>
 
     <item android:title="mais"
         android:id="@+id/more"
