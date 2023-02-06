@@ -422,6 +422,28 @@ fun String.formatDateEvent(): String {
     }
 }
 
+fun formatDateTrip(startDate: String, endDate: String) : String {
+    val sdSplitted = startDate.split("/")
+    val sdDayOfWeek = getDayOfWeekBr(startDate)
+    val sdDay = sdSplitted.first()
+    val sdMonth = getMonthString(sdSplitted[1])
+    val edSplitted = endDate.split("/")
+    val edDayOfWeek = getDayOfWeekBr(endDate)
+    val edDay = edSplitted.first()
+    val edMonth = getMonthString(edSplitted[1])
+    return "$sdDayOfWeek, $sdDay $sdMonth até $edDayOfWeek, $edDay $edMonth"
+}
+
+fun formatDateEvent(date: String, hour: String) : String {
+    val dateSplitted = date.split("/")
+    val dayOfWeek = getDayOfWeekBr(date)
+    val day = dateSplitted.first()
+    val month = getMonthString(dateSplitted[1])
+    return "$dayOfWeek, $day $month • $hour"
+}
+
+fun formatLocationTrip(locations: ArrayList<String>) : String = locations.joinToString(", ")
+
 fun formatDate(
     startDate: String,
     endDate: String

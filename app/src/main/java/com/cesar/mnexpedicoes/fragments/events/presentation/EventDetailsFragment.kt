@@ -44,8 +44,8 @@ class EventDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentEventDetailsBinding.bind(view)
-        val event = arguments?.getSerializable("event") as? EventResponse ?: EventResponse()
-        setupFragmentView(event)
+        val event = arguments?.getSerializable("event") as? EventResponse
+        setupFragmentView(event!!)
         setupRecyclerViewIncluded(event)
         setupRecyclerViewNotIncluded(event)
         setupRecyclerViewTickets(event)
@@ -65,12 +65,12 @@ class EventDetailsFragment : Fragment() {
         binding.txtEventTitle.text = event.title
         if (event.type == "trip") {
             binding.txtEventDate.text = formatDate(event.startDate.toString(), event.endDate.toString())
-            val locationsJoined = event.location?.joinToString(", ")
+            val locationsJoined = event.locations.joinToString(", ")
             binding.txtEventLocation.text = locationsJoined
         } else {
             binding.txtEventDate.text = "${event.date?.formatDateEvent()} • "
             binding.txtEventHour.text = event.hour
-            binding.txtEventLocation.text = event.location?.first()
+            binding.txtEventLocation.text = event.locations.first()
         }
         binding.txtEventDescription.text = event.description
     }

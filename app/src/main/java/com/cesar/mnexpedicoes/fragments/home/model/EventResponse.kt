@@ -12,7 +12,7 @@ class EventResponse(
     val hour: String? = "",
     val img: String? = "",
     val status: String? = "available",
-    val location: ArrayList<String>? = arrayListOf(),
+    val locations: ArrayList<String>,
     val description: String? = "",
     val included: ArrayList<String>? = arrayListOf(),
     val notIncluded: ArrayList<String>? = arrayListOf(),
