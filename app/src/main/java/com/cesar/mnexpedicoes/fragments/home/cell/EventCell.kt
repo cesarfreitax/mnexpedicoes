@@ -31,18 +31,16 @@ class EventCell(private val viewBinding: CellEventBinding) : BaseCell(viewBindin
 
     private fun setupCellView(event: EventResponse, fragment: Fragment) {
 
-
-
         viewBinding.imgEvent.load(event.img, fragment.requireContext())
         viewBinding.txtEventTitle.text = event.title
-        try {
-            val dateSpplitted = event.date?.split("/")?.toMutableList()!!
-            viewBinding.txtEventDate.text = "${getDayOfWeekBr(event.date.toString())}, ${dateSpplitted?.first()} ${getMonthString(dateSpplitted[1])} • ${event.hour}"
-        } catch (e: Exception) {
-            Toast.makeText(fragment.context, "Ocorreu um erro inesperado...", Toast.LENGTH_SHORT)
-                .show()
+        if (event.type == "trip") {
+            viewBinding.txtEventDate.text = formatDateTrip(event.startDate.toString(), event.endDate.toString())
+            viewBinding.txtEventLocation.text = formatLocationTrip(event.locations!!)
+
+        } else {
+            viewBinding.txtEventDate.text = formatDateEvent(event.date.toString(), event.hour.toString())
+            viewBinding.txtEventLocation.text = event.locations?.first()
         }
-        viewBinding.txtEventLocation.text = event.location?.first()
         setStatus(
             event.status ?: "available", viewBinding.cdvStatus, fragment
         )
