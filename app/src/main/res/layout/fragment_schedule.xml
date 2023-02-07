@@ -82,60 +82,12 @@
             android:textColor="@color/black"
             android:text="@string/generic_filtering_for"/>
 
-        <LinearLayout
-            android:id="@+id/lnr_filter_description"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/txt_filtering"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:orientation="horizontal"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Disponível"
-                android:textSize="@dimen/txt_tiny_2"
-                android:textColor="@color/black"
-                android:gravity="center"
-                android:drawablePadding="4dp"
-                app:drawableStartCompat="@drawable/ic_circle"
-                app:drawableTint="@color/green_available" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Poucas vagas"
-                android:textSize="@dimen/txt_tiny_2"
-                android:textColor="@color/black"
-                android:gravity="center"
-                android:drawablePadding="4dp"
-                android:layout_marginStart="8dp"
-                app:drawableStartCompat="@drawable/ic_circle"
-                app:drawableTint="@color/yellow_warning" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Esgotado"
-                android:textSize="@dimen/txt_tiny_2"
-                android:textColor="@color/black"
-                android:gravity="center"
-                android:drawablePadding="4dp"
-                android:layout_marginStart="8dp"
-                app:drawableStartCompat="@drawable/ic_circle"
-                app:drawableTint="@color/red_sold_out" />
-
-        </LinearLayout>
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcv_events"
             android:layout_width="0dp"
             android:background="@color/white_off"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/lnr_filter_description"
+            app:layout_constraintTop_toBottomOf="@id/txt_filtering"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"

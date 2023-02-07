@@ -60,10 +60,10 @@
             android:layout_height="wrap_content" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/ctl_full_schedule"
+            android:id="@+id/ctl_photos"
             android:layout_width="0dp"
             android:layout_height="200dp"
-            android:background="@color/pink_dark"
+            android:background="@color/pink"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -86,7 +86,7 @@
                     android:fontFamily="@font/montserrat_bold"
                     android:text="@string/generic_slogan_message_1"
                     android:textAlignment="center"
-                    android:textColor="@color/green_available"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/txt_large_1" />
 
                 <TextView
@@ -111,9 +111,9 @@
                         android:layout_height="match_parent"
                         android:layout_margin="16dp"
                         android:drawablePadding="4dp"
-                        android:fontFamily="@font/montserrat_bold"
+                        android:fontFamily="@font/montserrat_bolditalic"
                         android:gravity="center"
-                        android:text="@string/generic_full_schedule"
+                        android:text="Veja nosso álbum de fotos"
                         android:textColor="@color/black"
                         app:drawableEndCompat="@drawable/ic_arrow_right"
                         app:drawableTint="@color/black" />

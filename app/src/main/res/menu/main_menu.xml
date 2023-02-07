@@ -3,7 +3,8 @@
 
     <item android:title="Início"
         android:id="@+id/home"
-        android:icon="@drawable/ic_home"/>
+        android:icon="@drawable/ic_home"
+        />
 
     <item android:title="Agenda"
         android:id="@+id/schedule"

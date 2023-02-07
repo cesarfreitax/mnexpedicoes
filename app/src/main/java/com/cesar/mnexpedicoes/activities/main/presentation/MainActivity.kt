@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
         set(value) {
             field = value
             binding.toolbar.btnBackScreen.toggleVisibility(value)
-            binding.toolbar.btnBackScreenBg.toggleVisibility(value)
+//            binding.toolbar.btnBackScreenBg.toggleVisibility(value)
         }
 
     private fun loadFragment(fragment: Fragment) {

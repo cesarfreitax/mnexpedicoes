@@ -42,24 +42,28 @@ class EventCell(private val viewBinding: CellEventBinding) : BaseCell(viewBindin
             viewBinding.txtEventLocation.text = event.locations?.first()
         }
         setStatus(
-            event.status ?: "available", viewBinding.cdvStatus, fragment
+            event.status ?: "available", viewBinding.cdvStatus, viewBinding.txtStatus, fragment
         )
     }
 
     private fun setStatus(
         statusString: String,
         statusCdv: MaterialCardView,
+        statusTxt: TextView,
         fragment: Fragment
     ) {
         when (statusString) {
             Constants.AVAILABLE -> {
                 statusCdv.setCardBackgroundColor(fragment.context?.getColorStateList(R.color.green_available))
+                statusTxt.text = fragment.requireContext().getString(R.string.generic_available)
             }
             Constants.WARNING -> {
                 statusCdv.setCardBackgroundColor(fragment.context?.getColorStateList(R.color.yellow_warning))
+                statusTxt.text = fragment.requireContext().getString(R.string.generic_warning_tickets)
             }
             Constants.SOLD_OUT -> {
                 statusCdv.setCardBackgroundColor(fragment.context?.getColorStateList(R.color.red_sold_out))
+                statusTxt.text = fragment.requireContext().getString(R.string.generic_sold_out)
             }
         }
     }

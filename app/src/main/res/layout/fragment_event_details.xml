@@ -11,7 +11,7 @@
         android:id="@+id/ctl_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/beige_gradient_background"
+        android:background="@color/white_off"
         android:paddingBottom="16dp"
         tools:context=".fragments.events.presentation.EventDetailsFragment">
 
@@ -61,7 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="32dp"
             android:layout_marginTop="16dp"
-            app:cardBackgroundColor="@color/pink_dark"
+            app:cardBackgroundColor="@color/pink"
             app:cardCornerRadius="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -97,7 +97,6 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="40dp"
             android:background="@color/white"
-            android:gravity="center"
             android:orientation="vertical"
             android:paddingHorizontal="8dp"
             android:paddingVertical="8dp"
@@ -110,27 +109,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat_black"
-                android:textColor="@color/black"
+                android:textColor="@color/blue_pool"
                 android:textSize="@dimen/txt_medium_3"
-                android:textAlignment="center"
                 tools:text="Roberto Carlos" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="4dp">
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/txt_event_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:drawablePadding="4dp"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
+                    android:textColor="@color/blue_pool"
+                    android:fontFamily="@font/montserrat_semibolditalic"
                     android:textSize="@dimen/txt_medium_1"
-                    app:drawableStartCompat="@drawable/ic_calendar"
-                    app:drawableTint="@color/green_dark"
+
                     tools:text="14 de Abril • " />
 
                 <TextView
@@ -138,7 +134,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:text="16:00"
-                    android:fontFamily="@font/montserrat_italic"/>
+                    android:textColor="@color/blue_pool"
+                    android:fontFamily="@font/montserrat_semibolditalic"/>
 
 
             </LinearLayout>
@@ -148,11 +145,9 @@
                 android:id="@+id/txt_event_location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:textColor="@color/black"
+                android:textColor="@color/blue_pool"
                 android:textSize="@dimen/txt_medium_1"
-                app:drawableStartCompat="@drawable/ic_location"
-                app:drawableTint="@color/green_dark"
+                android:fontFamily="@font/montserrat_semibolditalic"
                 tools:text="Vivo Rio" />
 
             <TextView
@@ -161,7 +156,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="4dp"
                 android:layout_marginTop="8dp"
-                android:fontFamily="@font/montserrat"
+                android:fontFamily="@font/montserrat_italic"
                 android:textColor="@color/black"
                 android:textSize="@dimen/txt_small_3"
                 tools:text="Em suas últimas edições, o projeto foi considerado o mais buscado da folia nacional em São Paulo e fora da internet o público fez jus aos números: todas as apresentações tiveram seus ingressos esgotados. Com repertório sempre cheio de novidades que passa por sucessos de Olodum, Banda Eva, Ara Ketu, Daniela Mercury, Gilberto Gil, Caetano Veloso, Novos Baianos e Ivete Sangalo, o Bloco do Silva chega mais uma vez a Salvador com convidados especiais pra todo mundo dançar e cantar junto do começo ao fim." />
@@ -174,7 +169,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="32dp"
             android:layout_marginTop="8dp"
-            app:cardBackgroundColor="@color/pink_dark"
+            app:cardBackgroundColor="@color/pink"
             app:cardCornerRadius="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -230,7 +225,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="32dp"
             android:layout_marginTop="8dp"
-            app:cardBackgroundColor="@color/pink_dark"
+            app:cardBackgroundColor="@color/pink"
             app:cardCornerRadius="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -299,7 +294,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/pink"
+                    android:background="@color/blue_pool"
                     android:fontFamily="@font/montserrat_bold"
                     android:paddingVertical="8dp"
                     android:paddingStart="16dp"

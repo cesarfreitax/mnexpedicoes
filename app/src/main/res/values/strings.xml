@@ -16,8 +16,8 @@
     <string name="generic_half_price">Meia</string>
     <string name="generic_price">Valor</string>
     <string name="generic_filter_image">Imagem do filtro</string>
-    <string name="generic_slogan_message_1">Passear é bom demais...</string>
-    <string name="generic_slogan_message_2">Com a MN é ainda melhor!</string>
+    <string name="generic_slogan_message_1">Viva experiências únicas!</string>
+    <string name="generic_slogan_message_2">Colecione momentos.</string>
     <string name="generic_ticket_price">R$ %s</string>
 
     <!--  Event  -->

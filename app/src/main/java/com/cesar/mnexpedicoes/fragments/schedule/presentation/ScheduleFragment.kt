@@ -72,9 +72,7 @@ class ScheduleFragment : Fragment() {
                 filters.forEach { it.isSelected = false }
                 setupRecyclerViewFilters()
                 setupTxtFilterHint(query)
-                val imm =
-                    requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                imm.hideSoftInputFromWindow(binding.srcEvents.windowToken, 0)
+                closeKeyboard()
                 adapterEvents.notifyDataSetChanged()
                 return true
             }
@@ -92,6 +90,12 @@ class ScheduleFragment : Fragment() {
             }
 
         })
+    }
+
+    private fun closeKeyboard() {
+        val imm =
+            requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(binding.srcEvents.windowToken, 0)
     }
 
     private fun setupRecyclerViewFilters() {
@@ -141,15 +145,19 @@ class ScheduleFragment : Fragment() {
 
             override fun didSelectItemAtIndex(adapter: GenericRecyclerAdapter, index: Int) {
                 super.didSelectItemAtIndex(adapter, index)
-                val fragment = EventDetailsFragment()
-                val transaction = parentFragmentManager.beginTransaction()
-                transaction.addToBackStack(null)
-                val bundle = Bundle()
-                bundle.putSerializable("event", eventsFiltered[index])
-                fragment.arguments = bundle
-                transaction.replace(R.id.fcv_fragment_container, fragment).commit()
+                navigateToEventDetails(index)
             }
         }
+
+    private fun navigateToEventDetails(index: Int) {
+        val fragment = EventDetailsFragment()
+        val transaction = parentFragmentManager.beginTransaction()
+        transaction.addToBackStack(null)
+        val bundle = Bundle()
+        bundle.putSerializable("event", eventsFiltered[index])
+        fragment.arguments = bundle
+        transaction.replace(R.id.fcv_fragment_container, fragment).commit()
+    }
 
     private var recyclerViewDelegateFilters =
         object : GenericRecylerAdapterDelegate {
@@ -191,14 +199,13 @@ class ScheduleFragment : Fragment() {
                     setupTxtFilterHint(setStringByType(filters[index].type))
 
                     eventsFiltered.clear()
-                    val eventsCopy = events
-                    if (filters[index].type == "all") {
-                        eventsFiltered = eventsCopy
+                    val eventsCopy = events.toList()
+                    eventsFiltered = if (filters[index].type == "all") {
+                        eventsCopy.toMutableList()
                     } else {
                         val selectedType = filters[index].type
-                        eventsFiltered = eventsCopy.filter { it.type == selectedType}.toMutableList()
+                        eventsCopy.filter { it.type == selectedType}.toMutableList()
                     }
-
                     adapterEvents.notifyDataSetChanged()
                 }
 
