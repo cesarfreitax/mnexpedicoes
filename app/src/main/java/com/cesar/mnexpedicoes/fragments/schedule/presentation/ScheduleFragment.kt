@@ -198,6 +198,7 @@ class ScheduleFragment : Fragment() {
                         val selectedType = filters[index].type
                         eventsFiltered = eventsCopy.filter { it.type == selectedType}.toMutableList()
                     }
+
                     adapterEvents.notifyDataSetChanged()
                 }
 
