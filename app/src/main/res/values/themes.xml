@@ -18,5 +18,9 @@
 
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:fontFamily">@font/montserrat</item>
+
+        <item name="android:windowSplashScreenBackground">@color/beige</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/splash_logo</item>
     </style>
+
 </resources>
