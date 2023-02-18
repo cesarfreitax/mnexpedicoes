@@ -18,7 +18,7 @@
     <string name="generic_filter_image">Imagem do filtro</string>
     <string name="generic_slogan_message_1">Viva experiências únicas!</string>
     <string name="generic_slogan_message_2">Colecione momentos.</string>
-    <string name="generic_ticket_price">R$ %s</string>
+    <string name="generic_ticket_price">R$ %.2f</string>
 
     <!--  Event  -->
     <string name="event_photo">Foto do evento</string>
@@ -42,7 +42,6 @@
 
     <!--  Schedule  -->
     <string name="schedule_event_type">Escolha o tipo de passeio</string>
-    <string name="generic_filtering_for"><u>Filtrando por %s</u></string>
-
+    <string name="generic_filtering_for"><![CDATA[Filtrando por <b>%s</b>]]></string>
 
 </resources>

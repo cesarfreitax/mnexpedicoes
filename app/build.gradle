@@ -15,14 +15,14 @@ android {
 
     defaultConfig {
         applicationId "com.cesar.mnexpedicoes"
-        minSdk 31
+        minSdk 26
         targetSdk 33
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
-        vectorDrawables.useSupportLibrary = true
+        renderscriptTargetApi 23
+        renderscriptSupportModeEnabled true
     }
 
     buildTypes {
@@ -75,6 +75,7 @@ dependencies {
 
     // Glide
     implementation 'com.github.bumptech.glide:glide:4.13.1'
+    implementation 'jp.wasabeef:glide-transformations:4.3.0'
 
     // DotsIndicator
     implementation("com.tbuonomo:dotsindicator:4.3")
@@ -88,9 +89,23 @@ dependencies {
     implementation("com.google.dagger:hilt-android:2.44")
     kapt("com.google.dagger:hilt-android-compiler:2.44")
 
-
     // Flexbox
     implementation 'com.google.android.flexbox:flexbox:3.0.0'
+
+    // Blur image
+    implementation 'com.github.jrvansuita:GaussianBlur:1.0.3'
+
+    // Retrofit
+    implementation 'com.google.code.gson:gson:2.9.1'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+    // HTTP Logs
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.10.0'
+
+    //Skeleton
+    implementation 'com.github.ethanhua:Skeleton:-SNAPSHOT'
+    implementation 'io.supercharge:shimmerlayout:2.1.0'
 }
 
 kapt {

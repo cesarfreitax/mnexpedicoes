@@ -16,4 +16,6 @@
     <color name="green_available">#86DC3D</color>
     <color name="yellow_warning">#FFEB3B</color>
     <color name="red_sold_out">#E91E1E</color>
+
+    <color name="semi_transparent">#B2ECECEC</color>
 </resources>

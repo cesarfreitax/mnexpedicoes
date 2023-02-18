@@ -17,7 +17,7 @@ import com.cesar.mnexpedicoes.utils.formatDate
 import com.cesar.mnexpedicoes.utils.load
 import com.google.android.material.card.MaterialCardView
 
-class ViewPagerAdapter(private var trips: MutableList<EventResponse>, private val parentFragmentManager: FragmentManager, private val fragment: Fragment) :
+class ViewPagerAdapter(private var trips: List<EventResponse>, private val parentFragmentManager: FragmentManager, private val fragment: Fragment) :
     RecyclerView.Adapter<ViewPagerAdapter.PageViewHolder>() {
 
     private var formattedDateTxt = ""
@@ -60,7 +60,7 @@ class ViewPagerAdapter(private var trips: MutableList<EventResponse>, private va
         fragment: Fragment
     ) {
         title.text = trip.title
-        formattedDateTxt = formatDate(trip.startDate.toString(), trip.endDate.toString())
+        formattedDateTxt = formatDate(trip.date.toString(), trip.endDate.toString())
         date.text = formattedDateTxt
         img.load(trip.img, fragment.requireContext())
         setStatus(trip.status!!, statusCdv, statusTxt, fragment)

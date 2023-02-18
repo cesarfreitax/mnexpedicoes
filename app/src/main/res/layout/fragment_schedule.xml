@@ -8,6 +8,7 @@
     android:background="@color/white_off">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ctl_main_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:context=".fragments.schedule.presentation.ScheduleFragment"

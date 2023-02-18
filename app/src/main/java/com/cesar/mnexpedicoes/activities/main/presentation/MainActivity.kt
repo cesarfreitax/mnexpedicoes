@@ -8,7 +8,7 @@ import androidx.fragment.app.FragmentTransaction
 import com.cesar.mnexpedicoes.R
 import com.cesar.mnexpedicoes.databinding.ActivityMainBinding
 import com.cesar.mnexpedicoes.fragments.schedule.presentation.ScheduleFragment
-import com.cesar.mnexpedicoes.fragments.home.HomeFragment
+import com.cesar.mnexpedicoes.fragments.home.presentation.HomeFragment
 import com.cesar.mnexpedicoes.fragments.more.MoreFragment
 import com.cesar.mnexpedicoes.utils.toggleVisibility
 
