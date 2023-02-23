@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="Início"
+    <item android:title="@string/main_home"
         android:id="@+id/home"
         android:icon="@drawable/ic_home"
         />
 
-    <item android:title="Agenda"
+    <item android:title="@string/main_schedule"
         android:id="@+id/schedule"
         android:icon="@drawable/ic_calendar"/>
 
-    <item android:title="mais"
-        android:id="@+id/more"
-        android:icon="@drawable/ic_more"/>
+    <item android:title="@string/main_profile"
+        android:id="@+id/profile"
+        android:icon="@drawable/ic_profile_2"/>
 
 </menu>

@@ -21,6 +21,7 @@ import com.cesar.mnexpedicoes.fragments.schedule.cell.FilterTypeCell
 import com.cesar.mnexpedicoes.fragments.schedule.model.FilterResponse
 import com.cesar.mnexpedicoes.utils.hideKeyboard
 import com.cesar.mnexpedicoes.utils.parseHtml
+import com.cesar.mnexpedicoes.utils.toggleVisibility
 import com.cesar.mnexpedicoes.utils.unaccent
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexboxLayoutManager
@@ -85,6 +86,7 @@ class ScheduleFragment : Fragment() {
                     it.title.toString().unaccent().contains(query.toString().unaccent(), true)
                 }.toMutableList()
                 setFilter(query.toString())
+                emptyEventsHandler()
                 adapterEvents.notifyDataSetChanged()
                 this@ScheduleFragment.hideKeyboard()
                 return true
@@ -201,6 +203,7 @@ class ScheduleFragment : Fragment() {
                         val selectedType = filters[index].type
                         viewModel.getEventsFiltered(selectedType)
                     }
+                    emptyEventsHandler()
                     adapterEvents.notifyDataSetChanged()
                 }
 
@@ -210,6 +213,7 @@ class ScheduleFragment : Fragment() {
     private fun setupFilterAllByDefault() {
         setFilter("all")
         events = viewModel.events
+        emptyEventsHandler()
         adapterEvents.notifyDataSetChanged()
     }
 
@@ -252,6 +256,11 @@ class ScheduleFragment : Fragment() {
             bottomBarHidden = false
             backBtnVisible = false
         }
+    }
+
+    private fun emptyEventsHandler() {
+        binding.txtPlaceholderEmptyEvents.toggleVisibility(events.isEmpty())
+        binding.rcvEvents.toggleVisibility(events.isNotEmpty())
     }
 
 }

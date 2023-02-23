@@ -1,7 +1,5 @@
 package com.cesar.mnexpedicoes.fragments.home.presentation
 
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
@@ -20,7 +18,9 @@ import com.cesar.mnexpedicoes.fragments.events.presentation.EventDetailsFragment
 import com.cesar.mnexpedicoes.fragments.home.adapter.ViewPagerAdapter
 import com.cesar.mnexpedicoes.fragments.home.cell.EventCell
 import com.cesar.mnexpedicoes.fragments.home.model.EventResponse
+import com.cesar.mnexpedicoes.utils.Constants
 import com.cesar.mnexpedicoes.utils.PageItemSnapHelper
+import com.cesar.mnexpedicoes.utils.openBrowserWith
 import io.github.enicolas.genericadapter.AdapterHolderType
 import io.github.enicolas.genericadapter.adapter.GenericRecyclerAdapter
 import io.github.enicolas.genericadapter.adapter.GenericRecylerAdapterDelegate
@@ -72,10 +72,7 @@ class HomeFragment : Fragment() {
 
     private fun navigateToPhotoAlbum() {
         binding.cdvNavigatePhotoAlbum.setOnClickListener {
-            val url = "https://www.flickr.com/photos/148352424@N08/albums"
-            val intent = Intent(Intent.ACTION_VIEW)
-            intent.data = Uri.parse(url)
-            startActivity(intent)
+            this@HomeFragment.openBrowserWith(Constants.ALBUM_URL)
         }
     }
 
@@ -157,9 +154,12 @@ class HomeFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        (requireActivity() as MainActivity).apply {
-            bottomBarHidden = false
-            backBtnVisible = false
+        val activity = requireActivity()
+        if (activity is MainActivity) {
+            activity.apply {
+                bottomBarHidden = false
+                backBtnVisible = false
+            }
         }
     }
 }

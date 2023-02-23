@@ -9,7 +9,7 @@ import com.cesar.mnexpedicoes.R
 import com.cesar.mnexpedicoes.databinding.ActivityMainBinding
 import com.cesar.mnexpedicoes.fragments.schedule.presentation.ScheduleFragment
 import com.cesar.mnexpedicoes.fragments.home.presentation.HomeFragment
-import com.cesar.mnexpedicoes.fragments.more.MoreFragment
+import com.cesar.mnexpedicoes.fragments.profile.ProfileFragment
 import com.cesar.mnexpedicoes.utils.toggleVisibility
 
 
@@ -19,12 +19,13 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(binding.root)
         WindowCompat.setDecorFitsSystemWindows(window, false)
 
         val homeFragment = HomeFragment()
         val scheduleFragment = ScheduleFragment()
-        val moreFragment = MoreFragment()
+        val profileFragment = ProfileFragment()
 
         loadFragment(homeFragment)
 
@@ -32,7 +33,7 @@ class MainActivity : AppCompatActivity() {
             when (it.itemId) {
                 R.id.home -> loadFragment(homeFragment)
                 R.id.schedule -> loadFragment(scheduleFragment)
-                R.id.more -> loadFragment(moreFragment)
+                R.id.profile -> loadFragment(profileFragment)
             }
             true
         }
@@ -53,7 +54,6 @@ class MainActivity : AppCompatActivity() {
         set(value) {
             field = value
             binding.toolbar.btnBackScreen.toggleVisibility(value)
-//            binding.toolbar.btnBackScreenBg.toggleVisibility(value)
         }
 
     private fun loadFragment(fragment: Fragment) {

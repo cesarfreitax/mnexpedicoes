@@ -108,10 +108,10 @@ fun Int.stringMMSS(): String {
 
 // View
 fun View.toggleVisibility() {
-    if (visibility == View.VISIBLE) {
-        visibility = View.INVISIBLE
+    visibility = if (visibility == View.VISIBLE) {
+        View.INVISIBLE
     } else {
-        visibility = View.VISIBLE
+        View.VISIBLE
     }
 }
 

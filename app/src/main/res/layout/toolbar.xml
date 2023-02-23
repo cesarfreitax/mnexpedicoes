@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/beige_gradient_background"
-    android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
+    android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+    android:paddingVertical="4dp">
 
     <ImageButton
         android:id="@+id/btn_back_screen"
@@ -17,13 +18,14 @@
         android:backgroundTint="#00000000"
         app:layout_constraintTop_toTopOf="@id/img_logo"
         app:layout_constraintBottom_toBottomOf="@id/img_logo"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/main_back" />
 
 
     <ImageView
         android:id="@+id/img_logo"
         android:layout_width="wrap_content"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:contentDescription="@string/app_logo"
         android:src="@drawable/logo"
         app:layout_constraintEnd_toEndOf="parent"

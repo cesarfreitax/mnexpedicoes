@@ -1,8 +1,12 @@
 package com.cesar.mnexpedicoes.fragments.home.cell
 
+import android.view.Gravity
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
 import com.cesar.mnexpedicoes.R
 import com.cesar.mnexpedicoes.databinding.CellEventBinding
 import com.cesar.mnexpedicoes.fragments.home.model.EventResponse
@@ -18,19 +22,30 @@ class EventCell(private val viewBinding: CellEventBinding) : BaseCell(viewBindin
         isVertical: Boolean = false,
         isFirstCell: Boolean = false
     ) {
+        setLayoutParams(isVertical, isFirstCell)
+        setupCellView(event, fragment)
+    }
+
+    private fun setLayoutParams(isVertical: Boolean, isFirstCell: Boolean) {
+        setVerticalParams(isVertical)
+        setHorizontalParams(isVertical, isFirstCell)
+    }
+
+    private fun setHorizontalParams(isVertical: Boolean, isFirstCell: Boolean) {
+        if (!isVertical) {
+            val lp = viewBinding.cdvEventContainer.layoutParams as ViewGroup.MarginLayoutParams
+            lp.setMargins(16.dp, 0, 0, 0)
+            viewBinding.cdvEventContainer.layoutParams = lp
+        }
+    }
+
+    private fun setVerticalParams(isVertical: Boolean) {
         if (isVertical) {
             val layoutParams =
                 viewBinding.cdvEventContainer.layoutParams as ViewGroup.MarginLayoutParams
             layoutParams.setMargins(0, 16.dp, 0, 0)
             viewBinding.cdvEventContainer.layoutParams = layoutParams
         }
-        if (!isVertical && !isFirstCell) {
-            val layoutParams =
-                viewBinding.cdvEventContainer.layoutParams as ViewGroup.MarginLayoutParams
-            layoutParams.setMargins(16.dp, 0, 0, 0)
-            viewBinding.cdvEventContainer.layoutParams = layoutParams
-        }
-        setupCellView(event, fragment)
     }
 
     private fun setupCellView(event: EventResponse, fragment: Fragment) {

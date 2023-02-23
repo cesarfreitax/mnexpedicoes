@@ -12,7 +12,7 @@
        android:id="@+id/cdv_filter"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
-       app:cardBackgroundColor="@color/pink_dark"
+       app:cardBackgroundColor="@color/pink"
        app:cardCornerRadius="40dp">
        <ImageView
            android:id="@+id/img_filter"

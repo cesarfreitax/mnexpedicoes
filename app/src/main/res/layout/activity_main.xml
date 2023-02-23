@@ -28,6 +28,7 @@
         android:background="@drawable/beige_gradient_background"
         app:itemTextColor="@color/color_main_menu"
         app:itemIconTint="@color/color_main_menu"
-        app:menu="@menu/main_menu"/>
+        app:menu="@menu/main_menu"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

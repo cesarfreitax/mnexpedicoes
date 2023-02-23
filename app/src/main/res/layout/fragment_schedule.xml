@@ -16,12 +16,11 @@
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cdv_search_events"
-            android:layout_width="0dp"
+            android:layout_width="360dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="32dp"
+            android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
             app:cardCornerRadius="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -30,9 +29,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
-                android:elevation="0dp"
-                android:paddingVertical="0dp"
                 android:queryHint="Pesquisar eventos"
+                android:queryBackground="@android:color/transparent"
                 android:iconifiedByDefault="false"/>
 
         </com.google.android.material.card.MaterialCardView>
@@ -90,12 +88,23 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/txt_filtering"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginStart="32dp"
             android:layout_marginTop="8dp"
             tools:listitem="@layout/cell_event"
-            tools:itemCount="4"/>
+            tools:itemCount="4"
+            tools:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/txt_placeholder_empty_events"
+            app:layout_constraintTop_toBottomOf="@id/txt_filtering"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="32dp"
+            android:text="@string/events_empty_placeholder"
+            android:visibility="visible"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

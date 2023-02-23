@@ -1,7 +1,7 @@
 <resources>
 
     <!--  App  -->
-    <string name="app_name">mnexpedicoes</string>
+    <string name="app_name">MN Expedições</string>
     <string name="app_logo">Logo</string>
 
     <!--  Generic  -->
@@ -43,5 +43,12 @@
     <!--  Schedule  -->
     <string name="schedule_event_type">Escolha o tipo de passeio</string>
     <string name="generic_filtering_for"><![CDATA[Filtrando por <b>%s</b>]]></string>
+    <string name="main_home">Início</string>
+    <string name="main_schedule">Agenda</string>
+    <string name="main_back">Voltar</string>
+    <string name="events_empty_placeholder">Ops... parece que não temos evento nesta categoria.</string>
+    <string name="main_profile">Perfil</string>
+    <string name="default_error">Ocorreu um erro! Tente novamente.</string>
+    <string name="error_register_phone">Telefone já cadastrado.</string>
 
 </resources>

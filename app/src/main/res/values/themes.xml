@@ -15,12 +15,9 @@
         <item name="android:navigationBarColor">
             @android:color/transparent
         </item>
-
+        <item name="android:windowSplashScreenAnimatedIcon" tools:targetApi="s">@drawable/logo_813px</item>
+        <item name="android:windowSplashScreenBackground" tools:targetApi="s">@color/beige</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:fontFamily">@font/montserrat</item>
-
-        <item name="android:windowSplashScreenBackground">@color/beige</item>
-        <item name="android:windowSplashScreenAnimatedIcon">@drawable/splash_logo</item>
     </style>
-
 </resources>

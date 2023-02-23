@@ -1,5 +1,7 @@
 package com.cesar.mnexpedicoes.fragments.events.presentation
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -45,11 +47,27 @@ class EventDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentEventDetailsBinding.bind(view)
         val event = arguments?.getSerializable("event") as? EventResponse
+        setupFragment(event)
+    }
+
+    private fun setupFragment(event: EventResponse?) {
         setupFragmentView(event!!)
         setupRecyclerViewIncluded(event)
         setupRecyclerViewNotIncluded(event)
         setupRecyclerViewTickets(event)
         setupButtons()
+        binding.cdvEventPaymentWhatsapp.setOnClickListener {
+            val phoneNumber = "5521987911325"
+            val message = "Olá! Me interessei pelo evento ${event.title}"
+
+            val url = "https://api.whatsapp.com/send?phone=$phoneNumber&text=${Uri.encode(message)}"
+
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse(url)
+            intent.setPackage("com.whatsapp")
+            requireContext().startActivity(intent)
+
+        }
     }
 
     private fun setupFragmentView(event: EventResponse) {
