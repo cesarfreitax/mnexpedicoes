@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="txt_big_tiny_1">6sp</dimen>
+    <dimen name="txt_big_tiny_2">7sp</dimen>
+    <dimen name="txt_big_tiny_3">8sp</dimen>
     <dimen name="txt_tiny_1">10sp</dimen>
     <dimen name="txt_tiny_2">11sp</dimen>
     <dimen name="txt_tiny_3">12sp</dimen>
@@ -12,4 +15,7 @@
     <dimen name="txt_large_1">24sp</dimen>
     <dimen name="txt_large_2">25sp</dimen>
     <dimen name="txt_large_3">26sp</dimen>
+    <dimen name="txt_big_large_1">30sp</dimen>
+    <dimen name="txt_big_large_2">32sp</dimen>
+    <dimen name="txt_big_large_3">34sp</dimen>
 </resources>

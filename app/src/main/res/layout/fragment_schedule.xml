@@ -8,6 +8,7 @@
     android:background="@color/white_off">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ctl_main_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:context=".fragments.schedule.presentation.ScheduleFragment"
@@ -15,12 +16,11 @@
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cdv_search_events"
-            android:layout_width="0dp"
+            android:layout_width="360dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="32dp"
+            android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
             app:cardCornerRadius="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -29,9 +29,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
-                android:elevation="0dp"
-                android:paddingVertical="0dp"
                 android:queryHint="Pesquisar eventos"
+                android:queryBackground="@android:color/transparent"
                 android:iconifiedByDefault="false"/>
 
         </com.google.android.material.card.MaterialCardView>
@@ -82,67 +81,30 @@
             android:textColor="@color/black"
             android:text="@string/generic_filtering_for"/>
 
-        <LinearLayout
-            android:id="@+id/lnr_filter_description"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/txt_filtering"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:orientation="horizontal"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Disponível"
-                android:textSize="@dimen/txt_tiny_2"
-                android:textColor="@color/black"
-                android:gravity="center"
-                android:drawablePadding="4dp"
-                app:drawableStartCompat="@drawable/ic_circle"
-                app:drawableTint="@color/green_available" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Poucas vagas"
-                android:textSize="@dimen/txt_tiny_2"
-                android:textColor="@color/black"
-                android:gravity="center"
-                android:drawablePadding="4dp"
-                android:layout_marginStart="8dp"
-                app:drawableStartCompat="@drawable/ic_circle"
-                app:drawableTint="@color/yellow_warning" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Esgotado"
-                android:textSize="@dimen/txt_tiny_2"
-                android:textColor="@color/black"
-                android:gravity="center"
-                android:drawablePadding="4dp"
-                android:layout_marginStart="8dp"
-                app:drawableStartCompat="@drawable/ic_circle"
-                app:drawableTint="@color/red_sold_out" />
-
-        </LinearLayout>
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcv_events"
             android:layout_width="0dp"
             android:background="@color/white_off"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/lnr_filter_description"
+            app:layout_constraintTop_toBottomOf="@id/txt_filtering"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginStart="32dp"
             android:layout_marginTop="8dp"
             tools:listitem="@layout/cell_event"
-            tools:itemCount="4"/>
+            tools:itemCount="4"
+            tools:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/txt_placeholder_empty_events"
+            app:layout_constraintTop_toBottomOf="@id/txt_filtering"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="32dp"
+            android:text="@string/events_empty_placeholder"
+            android:visibility="visible"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

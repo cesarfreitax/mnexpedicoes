@@ -20,7 +20,6 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.ColorRes
-import androidx.compose.ui.text.toUpperCase
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.BlendModeColorFilterCompat
@@ -32,9 +31,12 @@ import androidx.core.view.children
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.cesar.mnexpedicoes.R
+import com.cesar.mnexpedicoes.fragments.home.model.Location
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
+import jp.wasabeef.glide.transformations.BlurTransformation
 import java.text.Normalizer
 import java.text.SimpleDateFormat
 import java.util.*
@@ -106,10 +108,10 @@ fun Int.stringMMSS(): String {
 
 // View
 fun View.toggleVisibility() {
-    if (visibility == View.VISIBLE) {
-        visibility = View.INVISIBLE
+    visibility = if (visibility == View.VISIBLE) {
+        View.INVISIBLE
     } else {
-        visibility = View.VISIBLE
+        View.VISIBLE
     }
 }
 
@@ -392,74 +394,75 @@ fun getMonthString(n: String): String {
     }
 }
 
-fun getDayOfWeekBr(dateString: String) : String {
-    val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale("pt", "BR"))
+fun getDayOfWeekBr(dateString: String): String {
+    val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale("pt", "BR"))
     val date = dateFormat.parse(dateString)
     val calendar = Calendar.getInstance(Locale("pt", "BR"))
     calendar.time = date!!
     val dayName = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale("pt", "BR"))
-    val splittedDayName = dayName?.substring(0,3)?.split("")?.toMutableList()!!
+    val splittedDayName = dayName?.substring(0, 3)?.split("")?.toMutableList()!!
     splittedDayName[1] = splittedDayName[1].uppercase()
     return splittedDayName.joinToString("")
 }
 
 fun String.formatDateEvent(): String {
-    val dateSplitted = this.split("/")
-    return when (dateSplitted[1]) {
-        "01" -> "${dateSplitted[0]} de Janeiro"
-        "02" -> "${dateSplitted[0]} de Fevereiro"
-        "03" -> "${dateSplitted[0]} de Março"
-        "04" -> "${dateSplitted[0]} de Abril"
-        "05" -> "${dateSplitted[0]} de Maio"
-        "06" -> "${dateSplitted[0]} de Junho"
-        "07" -> "${dateSplitted[0]} de Julho"
-        "08" -> "${dateSplitted[0]} de Agosto"
-        "09" -> "${dateSplitted[0]} de Setembro"
-        "10" -> "${dateSplitted[0]} de Outubro"
-        "11" -> "${dateSplitted[0]} de Novembro"
-        "12" -> "${dateSplitted[0]} de Dezembro"
+    val dateSplitted = this.split("-")
+    return when (val day = dateSplitted[2]) {
+        "01" -> "$day de Janeiro"
+        "02" -> "$day de Fevereiro"
+        "04" -> "$day de Abril"
+        "05" -> "$day de Maio"
+        "03" -> "$day de Março"
+        "06" -> "$day de Junho"
+        "07" -> "$day de Julho"
+        "08" -> "$day de Agosto"
+        "09" -> "$day de Setembro"
+        "10" -> "$day de Outubro"
+        "11" -> "$day de Novembro"
+        "12" -> "$day de Dezembro"
         else -> "?"
     }
 }
 
-fun formatDateTrip(startDate: String, endDate: String) : String {
-    val sdSplitted = startDate.split("/")
+fun formatDateTrip(startDate: String, endDate: String): String {
+    val sdSplitted = startDate.split("-")
     val sdDayOfWeek = getDayOfWeekBr(startDate)
-    val sdDay = sdSplitted.first()
+    val sdDay = sdSplitted.last()
     val sdMonth = getMonthString(sdSplitted[1])
-    val edSplitted = endDate.split("/")
+    val edSplitted = endDate.split("-")
     val edDayOfWeek = getDayOfWeekBr(endDate)
-    val edDay = edSplitted.first()
+    val edDay = edSplitted.last()
     val edMonth = getMonthString(edSplitted[1])
     return "$sdDayOfWeek, $sdDay $sdMonth até $edDayOfWeek, $edDay $edMonth"
 }
 
-fun formatDateEvent(date: String, hour: String) : String {
-    val dateSplitted = date.split("/")
+fun formatDateEvent(date: String, hour: String): String {
+    val dateSplitted = date.split("-")
     val dayOfWeek = getDayOfWeekBr(date)
-    val day = dateSplitted.first()
+    val day = dateSplitted[2]
     val month = getMonthString(dateSplitted[1])
     return "$dayOfWeek, $day $month • $hour"
 }
 
-fun formatLocationTrip(locations: ArrayList<String>) : String = locations.joinToString(", ")
+fun formatLocationTrip(locations: ArrayList<Location>): String =
+    locations.map { it.name }.joinToString(", ")
 
 fun formatDate(
     startDate: String,
     endDate: String
 ): String {
-    val startDateSplitted = startDate.split("/").toList()
-    val endDateSplitted = endDate.split("/").toList()
+    val startDateSplitted = startDate.split("-").toList()
+    val endDateSplitted = endDate.split("-").toList()
     return if (startDateSplitted[1] == endDateSplitted[1]) {
-        "De ${startDateSplitted[0]} a ${endDateSplitted[0]} de ${
+        "De ${startDateSplitted[2]} a ${endDateSplitted[2]} de ${
             getMonthString(
                 startDateSplitted[1]
             )
         }"
     } else {
-        "De ${startDateSplitted[0]} de ${getMonthString(startDateSplitted[1])} a ${endDateSplitted[0]} de ${
+        "De ${startDateSplitted[2]} de ${getMonthString(startDateSplitted[1])} a ${endDateSplitted[2]} de ${
             getMonthString(
-                startDateSplitted[1]
+                endDateSplitted[1]
             )
         }"
     }
@@ -480,4 +483,14 @@ fun animateDirection(up: Boolean = false, down: Boolean = false, context: Contex
         R.anim.scale_up
     ) else AnimationUtils.loadAnimation(context, R.anim.scale_down)
 }
+
+fun ImageView.loadBlurry(url: String?, context: Context) {
+    Glide.with(context)
+        .load(url)
+        .apply(RequestOptions.bitmapTransform(BlurTransformation(15, 3)))
+        .into(this)
+}
+
+
+
 

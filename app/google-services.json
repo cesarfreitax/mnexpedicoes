@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "715832079783",
+    "project_id": "smsauth-3820c",
+    "storage_bucket": "smsauth-3820c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:715832079783:android:1391dccda31f2a8f687282",
+        "android_client_info": {
+          "package_name": "com.cesar.mnexpedicoes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "715832079783-6sm6p3b385oaj8kc4indubf0kbs0f6l4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcPsUe3eoKfO_pKegvmcU0q_hW2boxU0E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "715832079783-6sm6p3b385oaj8kc4indubf0kbs0f6l4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,7 +1,7 @@
 <resources>
 
     <!--  App  -->
-    <string name="app_name">mnexpedicoes</string>
+    <string name="app_name">MN Expedições</string>
     <string name="app_logo">Logo</string>
 
     <!--  Generic  -->
@@ -16,9 +16,9 @@
     <string name="generic_half_price">Meia</string>
     <string name="generic_price">Valor</string>
     <string name="generic_filter_image">Imagem do filtro</string>
-    <string name="generic_slogan_message_1">Passear é bom demais...</string>
-    <string name="generic_slogan_message_2">Com a MN é ainda melhor!</string>
-    <string name="generic_ticket_price">R$ %s</string>
+    <string name="generic_slogan_message_1">Viva experiências únicas!</string>
+    <string name="generic_slogan_message_2">Colecione momentos.</string>
+    <string name="generic_ticket_price">R$ %.2f</string>
 
     <!--  Event  -->
     <string name="event_photo">Foto do evento</string>
@@ -42,7 +42,13 @@
 
     <!--  Schedule  -->
     <string name="schedule_event_type">Escolha o tipo de passeio</string>
-    <string name="generic_filtering_for"><u>Filtrando por %s</u></string>
-
+    <string name="generic_filtering_for"><![CDATA[Filtrando por <b>%s</b>]]></string>
+    <string name="main_home">Início</string>
+    <string name="main_schedule">Agenda</string>
+    <string name="main_back">Voltar</string>
+    <string name="events_empty_placeholder">Ops... parece que não temos evento nesta categoria.</string>
+    <string name="main_profile">Perfil</string>
+    <string name="default_error">Ocorreu um erro! Tente novamente.</string>
+    <string name="error_register_phone">Telefone já cadastrado.</string>
 
 </resources>

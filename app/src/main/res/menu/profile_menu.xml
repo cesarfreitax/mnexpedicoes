@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Editar perfil"
+        android:id="@+id/edit_profile"
+        android:icon="@drawable/ic_edit"
+        />
+
+    <item android:title="Favoritos"
+        android:id="@+id/favorites"
+        android:icon="@drawable/ic_favorite_filled"/>
+
+    <item android:title="Histórico"
+        android:id="@+id/profile"
+        android:icon="@drawable/ic_history"/>
+
+    <item android:title="Cupoms"
+        android:icon="@drawable/ic_cupom"/>
+
+    <item android:title="Ajuda"
+        android:icon="@drawable/ic_help"/>
+
+    <item android:title="Sair"
+        android:icon="@drawable/ic_logout"/>
+
+
+</menu>

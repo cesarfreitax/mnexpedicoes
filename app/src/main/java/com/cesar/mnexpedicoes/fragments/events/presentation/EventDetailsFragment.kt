@@ -1,7 +1,7 @@
 package com.cesar.mnexpedicoes.fragments.events.presentation
 
-import android.graphics.RenderEffect
-import android.graphics.Shader
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +18,8 @@ import com.cesar.mnexpedicoes.databinding.FragmentEventDetailsBinding
 import com.cesar.mnexpedicoes.fragments.events.cell.ItemIncludedCell
 import com.cesar.mnexpedicoes.fragments.events.cell.TicketCell
 import com.cesar.mnexpedicoes.fragments.home.model.EventResponse
+import com.cesar.mnexpedicoes.fragments.home.model.Included
+import com.cesar.mnexpedicoes.fragments.home.model.NotIncluded
 import com.cesar.mnexpedicoes.fragments.home.model.Ticket
 import com.cesar.mnexpedicoes.utils.*
 import io.github.enicolas.genericadapter.AdapterHolderType
@@ -30,8 +32,8 @@ class EventDetailsFragment : Fragment() {
     private val adapterIncluded = GenericRecyclerAdapter()
     private val adapterNotIncluded = GenericRecyclerAdapter()
     private val adapterTickets = GenericRecyclerAdapter()
-    private var included = mutableListOf<String>()
-    private var notIncluded = mutableListOf<String>()
+    private var included = mutableListOf<Included>()
+    private var notIncluded = mutableListOf<NotIncluded>()
     private var tickets = mutableListOf<Ticket>()
 
     override fun onCreateView(
@@ -45,32 +47,40 @@ class EventDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentEventDetailsBinding.bind(view)
         val event = arguments?.getSerializable("event") as? EventResponse
+        setupFragment(event)
+    }
+
+    private fun setupFragment(event: EventResponse?) {
         setupFragmentView(event!!)
         setupRecyclerViewIncluded(event)
         setupRecyclerViewNotIncluded(event)
         setupRecyclerViewTickets(event)
         setupButtons()
+        binding.cdvEventPaymentWhatsapp.setOnClickListener {
+            val phoneNumber = "5521987911325"
+            val message = "Olá! Me interessei pelo evento ${event.title}"
+
+            val url = "https://api.whatsapp.com/send?phone=$phoneNumber&text=${Uri.encode(message)}"
+
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse(url)
+            intent.setPackage("com.whatsapp")
+            requireContext().startActivity(intent)
+
+        }
     }
 
     private fun setupFragmentView(event: EventResponse) {
         binding.imgEvent.load(event.img, requireContext())
-        binding.imgEventBlur.setRenderEffect(
-            RenderEffect.createBlurEffect(
-                50f,
-                50f,
-                Shader.TileMode.MIRROR
-            )
-        )
-        binding.imgEventBlur.load(event.img, requireContext())
+        binding.imgEventBlur.loadBlurry(event.img, requireContext())
         binding.txtEventTitle.text = event.title
         if (event.type == "trip") {
-            binding.txtEventDate.text = formatDate(event.startDate.toString(), event.endDate.toString())
-            val locationsJoined = event.locations.joinToString(", ")
-            binding.txtEventLocation.text = locationsJoined
+            binding.txtEventDate.text = formatDate(event.date.toString(), event.endDate.toString())
+            binding.txtEventLocation.text = formatLocationTrip(event.locations)
         } else {
             binding.txtEventDate.text = "${event.date?.formatDateEvent()} • "
             binding.txtEventHour.text = event.hour
-            binding.txtEventLocation.text = event.locations.first()
+            binding.txtEventLocation.text = event.locations.first().name
         }
         binding.txtEventDescription.text = event.description
     }
@@ -167,7 +177,7 @@ class EventDetailsFragment : Fragment() {
     }
 
     private fun setupRecyclerViewIncluded(event: EventResponse) {
-        included = event.included!!
+        included = event.includeds
         val layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding.rcvIncluded.layoutManager = layoutManager
         binding.rcvIncluded.adapter = adapterIncluded
@@ -176,7 +186,7 @@ class EventDetailsFragment : Fragment() {
     }
 
     private fun setupRecyclerViewNotIncluded(event: EventResponse) {
-        notIncluded = event.notIncluded!!
+        notIncluded = event.notIncludeds
         val layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding.rcvNotIncluded.layoutManager = layoutManager
         binding.rcvNotIncluded.adapter = adapterNotIncluded
@@ -216,7 +226,7 @@ class EventDetailsFragment : Fragment() {
             ) {
                 (cell as ItemIncludedCell).let { c ->
                     val item = included[position]
-                    c.setupCell(item, fragment = this@EventDetailsFragment)
+                    c.setupCell(item.description.toString(), fragment = this@EventDetailsFragment)
                 }
             }
 
@@ -248,7 +258,7 @@ class EventDetailsFragment : Fragment() {
             ) {
                 (cell as ItemIncludedCell).let { c ->
                     val item = notIncluded[position]
-                    c.setupCell(item, false, this@EventDetailsFragment)
+                    c.setupCell(item.description.toString(), false, this@EventDetailsFragment)
                 }
             }
 
