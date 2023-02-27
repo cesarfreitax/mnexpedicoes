@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="16dp"
-        tools:context=".fragments.schedule.presentation.ScheduleFragment">
+        tools:context=".features.schedule.presentation.ScheduleFragment">
 
         <View
             android:id="@+id/skeleton_schedule_1"

@@ -3,45 +3,59 @@ package com.cesar.mnexpedicoes.activities.main.presentation
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
 import com.cesar.mnexpedicoes.R
 import com.cesar.mnexpedicoes.databinding.ActivityMainBinding
-import com.cesar.mnexpedicoes.fragments.schedule.presentation.ScheduleFragment
-import com.cesar.mnexpedicoes.fragments.home.presentation.HomeFragment
-import com.cesar.mnexpedicoes.fragments.profile.ProfileFragment
+import com.cesar.mnexpedicoes.features.home.presentation.HomeFragment
+import com.cesar.mnexpedicoes.features.profile.presentation.ProfileFragment
+import com.cesar.mnexpedicoes.features.schedule.presentation.ScheduleFragment
+import com.cesar.mnexpedicoes.utils.getSharedPreferences
+import com.cesar.mnexpedicoes.utils.push
 import com.cesar.mnexpedicoes.utils.toggleVisibility
-
 
 class MainActivity : AppCompatActivity() {
 
-    private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+    private var _binding: ActivityMainBinding? = null
+    private val binding: ActivityMainBinding
+        get() = requireNotNull(_binding)
+    private val fragments = listOf(HomeFragment(), ScheduleFragment(), ProfileFragment())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         WindowCompat.setDecorFitsSystemWindows(window, false)
+        setupActivity()
+    }
 
-        val homeFragment = HomeFragment()
-        val scheduleFragment = ScheduleFragment()
-        val profileFragment = ProfileFragment()
+    private fun setupActivity() {
+        saveUserId()
+        setupNavigation()
+        setupToolbar()
+    }
 
-        loadFragment(homeFragment)
-
+    private fun setupNavigation() {
+        push(fragments[0])
         binding.bnvMenu.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.home -> loadFragment(homeFragment)
-                R.id.schedule -> loadFragment(scheduleFragment)
-                R.id.profile -> loadFragment(profileFragment)
+                R.id.home -> push(fragments[0])
+                R.id.schedule -> push(fragments[1])
+                R.id.profile -> push(fragments[2])
             }
             true
         }
-        backBtnVisible = false
+    }
 
+    private fun setupToolbar() {
+        backBtnVisible = false
         binding.toolbar.btnBackScreen.setOnClickListener {
             supportFragmentManager.popBackStack()
         }
+    }
+
+    private fun saveUserId() {
+        val userId = intent.getStringExtra("data")
+        val sharedPref = getSharedPreferences()
+        sharedPref.edit().putString("userId", userId).apply()
     }
 
     var bottomBarHidden = false
@@ -55,14 +69,4 @@ class MainActivity : AppCompatActivity() {
             field = value
             binding.toolbar.btnBackScreen.toggleVisibility(value)
         }
-
-    private fun loadFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction().apply {
-            setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).
-            replace(R.id.fcv_fragment_container, fragment)
-            commit()
-        }
-
-    }
-
 }

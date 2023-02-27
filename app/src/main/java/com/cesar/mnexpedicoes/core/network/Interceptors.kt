@@ -17,7 +17,7 @@ class Interceptors {
     }
 
     companion object {
-        fun client() : OkHttpClient {
+        fun client(): OkHttpClient {
             val loggingInterceptor = HttpLoggingInterceptor().apply {
                 level = HttpLoggingInterceptor.Level.BODY
             }

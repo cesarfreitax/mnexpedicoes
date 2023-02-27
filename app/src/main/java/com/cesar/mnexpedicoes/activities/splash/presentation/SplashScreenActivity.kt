@@ -2,34 +2,35 @@ package com.cesar.mnexpedicoes.activities.splash.presentation
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
-import com.cesar.mnexpedicoes.R
-import com.cesar.mnexpedicoes.activities.main.presentation.MainActivity
+import com.cesar.mnexpedicoes.activities.login.presentation.LoginActivity
 import com.cesar.mnexpedicoes.databinding.SplashScreenBinding
 
 @SuppressLint("CustomSplashScreen")
 class SplashScreenActivity : AppCompatActivity() {
 
-    private val binding by lazy { SplashScreenBinding.inflate(layoutInflater) }
+    private var _binding: SplashScreenBinding? = null
+    private val binding: SplashScreenBinding
+        get() = requireNotNull(_binding)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        _binding = SplashScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setupActivity()
+    }
 
+    private fun setupActivity() {
         Handler(Looper.getMainLooper()).postDelayed({
             navigateToMainActivity()
         }, 3000)
-
-
     }
 
     private fun navigateToMainActivity() {
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
         finish()
     }

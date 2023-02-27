@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="txt_password_1">5sp</dimen>
     <dimen name="txt_big_tiny_1">6sp</dimen>
     <dimen name="txt_big_tiny_2">7sp</dimen>
     <dimen name="txt_big_tiny_3">8sp</dimen>

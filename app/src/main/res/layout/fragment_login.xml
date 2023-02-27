@@ -23,7 +23,8 @@
             <ImageView
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:src="@drawable/logo_no_margin" />
+                android:src="@drawable/logo_no_margin"
+                android:contentDescription="@string/login_app_logo" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -36,7 +37,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Explore novos lugares com a gente"
+                android:text="@string/login_explore_new_places"
                 android:textColor="@color/blue_pool"
                 android:textSize="@dimen/txt_medium_1" />
 
@@ -50,18 +51,18 @@
             app:layout_constraintTop_toBottomOf="@id/lnr_header"
             app:cardCornerRadius="30dp"
             app:cardElevation="10dp"
+            android:paddingVertical="16dp"
             android:layout_marginHorizontal="42dp"
             android:layout_marginTop="16dp">
 
             <com.santalu.maskara.widget.MaskEditText
                 android:id="@+id/tie_phone"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:background="@android:color/transparent"
                 android:inputType="number"
-                android:hint="Telefone"
+                android:hint="@string/register_phone"
                 android:textColorHint="@color/hint"
-                android:layout_marginVertical="16dp"
                 android:layout_marginStart="16dp"
                 app:mask="+55 (__) _____-____"
                 app:maskStyle="completable"/>
@@ -81,11 +82,10 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tie_password"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="16dp"
+                android:layout_height="60dp"
                 android:layout_marginStart="16dp"
                 android:background="@android:color/transparent"
-                android:hint="Senha"
+                android:hint="@string/register_password"
                 android:inputType="textPassword"
                 android:textColorHint="@color/hint" />
 
@@ -103,34 +103,46 @@
 
             <ImageView
                 android:id="@+id/img_next"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_margin="8dp"
                 android:src="@drawable/ic_next"
-                app:tint="@color/white" />
+                app:tint="@color/white"
+                android:contentDescription="@string/register_next" />
 
             <ProgressBar
                 android:id="@+id/pgb_loading"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_margin="8dp"
                 android:indeterminateTint="@color/white"
                 android:visibility="gone"/>
 
         </androidx.cardview.widget.CardView>
 
+    <CheckBox
+        android:id="@+id/ckb_keep_login"
+        app:layout_constraintTop_toBottomOf="@id/cdv_password"
+        app:layout_constraintStart_toStartOf="@id/cdv_password"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/grey"
+        android:buttonTint="@color/pink"
+        android:text="@string/login_keep_login"/>
+
     <TextView
         android:id="@+id/txt_password_visibility_toggle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Visualizar senha"
-        app:layout_constraintTop_toBottomOf="@id/cdv_password"
+        android:text="@string/login_show_password"
+        app:layout_constraintTop_toBottomOf="@id/ckb_keep_login"
         app:layout_constraintStart_toStartOf="@id/cdv_password"
-        android:layout_marginTop="8dp"
         android:layout_marginStart="4dp"
-        app:drawableStartCompat="@drawable/ic_eye"
+        app:drawableStartCompat="@drawable/ic_visibility_off"
         android:drawablePadding="4dp"
-        android:gravity="center"/>
+        android:gravity="center"
+        app:drawableTint="@color/pink" />
 
         <TextView
             android:id="@+id/txt_forgotten_password"
@@ -138,7 +150,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginStart="4dp"
-            android:text="Esqueceu a sua senha?"
+            android:text="@string/login_forgotten_password"
             android:textSize="@dimen/txt_small_1"
             app:layout_constraintStart_toStartOf="@id/cdv_password"
             app:layout_constraintTop_toBottomOf="@id/txt_password_visibility_toggle" />
@@ -156,7 +168,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Não tem uma conta?"
+                android:text="@string/login_havent_account"
                 android:textSize="@dimen/txt_small_1" />
 
             <TextView
@@ -165,7 +177,7 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/montserrat_bold"
-                android:text="Crie agora!"
+                android:text="@string/login_create_now"
                 android:textColor="@color/pink"
                 android:textSize="@dimen/txt_small_1" />
 
@@ -177,10 +189,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="ou"
+            android:text="@string/login_or"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/lnr_create_acc" />
+            app:layout_constraintTop_toBottomOf="@id/lnr_create_acc"
+            android:visibility="gone"/>
 
         <View
             android:layout_width="0dp"
@@ -190,7 +203,8 @@
             app:layout_constraintBottom_toBottomOf="@id/txt_or"
             app:layout_constraintEnd_toStartOf="@id/txt_or"
             app:layout_constraintStart_toStartOf="@id/cdv_password"
-            app:layout_constraintTop_toTopOf="@id/txt_or" />
+            app:layout_constraintTop_toTopOf="@id/txt_or"
+            android:visibility="gone"/>
 
         <View
             android:layout_width="0dp"
@@ -200,7 +214,8 @@
             app:layout_constraintBottom_toBottomOf="@id/txt_or"
             app:layout_constraintEnd_toEndOf="@id/cdv_password"
             app:layout_constraintStart_toEndOf="@id/txt_or"
-            app:layout_constraintTop_toTopOf="@id/txt_or" />
+            app:layout_constraintTop_toTopOf="@id/txt_or"
+            android:visibility="gone"/>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cdv_google_login"
@@ -212,7 +227,8 @@
             app:cardElevation="10dp"
             app:layout_constraintTop_toBottomOf="@id/txt_or"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="32dp">
+            android:layout_marginBottom="32dp"
+            android:visibility="gone">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -224,14 +240,15 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/ic_google" />
+                    android:src="@drawable/ic_google"
+                    android:contentDescription="@string/login_google_icon" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
                     android:fontFamily="@font/montserrat_bold"
-                    android:text="Entrar com o Google"
+                    android:text="@string/login_google_sigin"
                     android:textColor="@color/blue" />
 
             </LinearLayout>

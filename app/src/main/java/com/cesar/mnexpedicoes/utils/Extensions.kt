@@ -33,7 +33,7 @@ import androidx.lifecycle.MutableLiveData
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.cesar.mnexpedicoes.R
-import com.cesar.mnexpedicoes.fragments.home.model.Location
+import com.cesar.mnexpedicoes.features.home.model.Location
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
 import jp.wasabeef.glide.transformations.BlurTransformation

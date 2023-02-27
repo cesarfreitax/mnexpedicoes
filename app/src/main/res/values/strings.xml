@@ -50,5 +50,35 @@
     <string name="main_profile">Perfil</string>
     <string name="default_error">Ocorreu um erro! Tente novamente.</string>
     <string name="error_register_phone">Telefone já cadastrado.</string>
+    <string name="profile_camera">CÂMERA</string>
+    <string name="profile_gallery">GALERIA</string>
+    <string name="profile_edit_profile">Editar perfil</string>
+    <string name="profile_favorites">Favoritos</string>
+    <string name="profile_history">Histórico</string>
+    <string name="profile_tickets">Cupoms</string>
+    <string name="profile_help">Ajuda</string>
+    <string name="profile_logout">Sair</string>
+    <string name="register_create_account">Crie sua conta</string>
+    <string name="register_fullname">Nome completo</string>
+    <string name="register_phone">Telefone</string>
+    <string name="register_password">Senha</string>
+    <string name="register_confirm_password">Confirme a sua senha</string>
+    <string name="register_show_passwords">Visualizar senhas</string>
+    <string name="register_next">Próximo</string>
+    <string name="profile_profile_image">Imagem de perfil</string>
+    <string name="login_app_logo">Logo do aplicativo</string>
+    <string name="login_explore_new_places">Explore novos lugares com a gente</string>
+    <string name="login_keep_login">Manter conectado</string>
+    <string name="login_show_password">Visualizar senha</string>
+    <string name="login_forgotten_password">Esqueceu a sua senha?</string>
+    <string name="login_havent_account">Não tem uma conta?</string>
+    <string name="login_create_now">Crie agora!</string>
+    <string name="login_or">ou</string>
+    <string name="login_google_icon">Icone do google</string>
+    <string name="login_google_sigin">Entrar com o Google</string>
+    <string name="editprofile_birthday">Data de nascimento</string>
+    <string name="editprofile_cpf">CPF</string>
+    <string name="editprofile_change_password">Quero alterar minha senha</string>
+    <string name="schedule_main_slogan">Fazendo a vida valer a pena.</string>
 
 </resources>

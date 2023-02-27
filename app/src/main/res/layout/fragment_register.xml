@@ -9,7 +9,7 @@
         android:id="@+id/txt_create_your_acc"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:text="Crie sua conta"
+        android:text="@string/register_create_account"
         android:textSize="@dimen/txt_large_1"
         android:textColor="@color/pink"
         android:fontFamily="@font/montserrat_bold"
@@ -18,7 +18,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="24dp"/>
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/cdv_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -31,17 +31,16 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tie_name"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="16dp"
+            android:layout_height="60dp"
             android:layout_marginStart="16dp"
             android:background="@android:color/transparent"
-            android:hint="Nome completo"
+            android:hint="@string/register_fullname"
             android:inputType="textPersonName"
             android:textColorHint="@color/hint" />
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/cdv_phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -54,19 +53,18 @@
         <com.santalu.maskara.widget.MaskEditText
             android:id="@+id/tie_phone"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:background="@android:color/transparent"
             android:inputType="number"
-            android:hint="Telefone"
+            android:hint="@string/register_phone"
             android:textColorHint="@color/hint"
-            android:layout_marginVertical="16dp"
             android:layout_marginStart="16dp"
             app:mask="+55 (__) _____-____"
             app:maskStyle="completable"/>
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/cdv_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -80,17 +78,16 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tie_password"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="16dp"
+            android:layout_height="60dp"
             android:layout_marginStart="16dp"
             android:background="@android:color/transparent"
-            android:hint="Senha"
+            android:hint="@string/register_password"
             android:inputType="textPassword"
             android:textColorHint="@color/hint" />
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/cdv_confirm_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -104,21 +101,20 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tie_confirm_password"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="16dp"
+            android:layout_height="60dp"
             android:layout_marginStart="16dp"
             android:background="@android:color/transparent"
-            android:hint="Confirme a sua senha"
+            android:hint="@string/register_confirm_password"
             android:inputType="textPassword"
             android:textColorHint="@color/hint" />
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
     <TextView
         android:id="@+id/txt_password_visibility_toggle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Visualizar senhas"
+        android:text="@string/register_show_passwords"
         app:layout_constraintTop_toBottomOf="@id/cdv_confirm_password"
         app:layout_constraintStart_toStartOf="@id/cdv_confirm_password"
         android:layout_marginTop="8dp"
@@ -139,16 +135,17 @@
 
         <ImageView
             android:id="@+id/img_next"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_margin="8dp"
             android:src="@drawable/ic_next"
-            app:tint="@color/white" />
+            app:tint="@color/white"
+            android:contentDescription="@string/register_next" />
 
         <ProgressBar
             android:id="@+id/pgb_loading"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_margin="8dp"
             android:indeterminateTint="@color/white"
             android:visibility="gone"/>

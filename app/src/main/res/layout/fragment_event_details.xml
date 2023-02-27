@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:background="@color/white_off"
         android:paddingBottom="16dp"
-        tools:context=".fragments.events.presentation.EventDetailsFragment">
+        tools:context=".features.events.presentation.EventDetailsFragment">
 
         <View
             android:id="@+id/viw_top_bg"
