@@ -1,19 +1,12 @@
 package com.cesar.mnexpedicoes.core.network
 
-import com.cesar.mnexpedicoes.fragments.home.model.EventResponse
-import com.cesar.mnexpedicoes.fragments.login.model.CheckCredencialsResponse
-import com.cesar.mnexpedicoes.fragments.login.register.model.UserExistsResponse
-import com.cesar.mnexpedicoes.fragments.login.register.model.UserResponse
-import com.cesar.mnexpedicoes.utils.jsonObjectOf
+import com.cesar.mnexpedicoes.features.home.model.EventResponse
+import com.cesar.mnexpedicoes.features.login.model.CheckCredencialsResponse
+import com.cesar.mnexpedicoes.features.login.register.model.UserExistsResponse
+import com.cesar.mnexpedicoes.features.login.register.model.UserResponse
 import com.google.gson.JsonObject
-import org.json.JSONObject
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.Headers
-import retrofit2.http.POST
-import retrofit2.http.Path
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface ApiInterface {
 
@@ -22,6 +15,11 @@ interface ApiInterface {
     fun getSchedule(): Call<ArrayList<EventResponse>>
 
     // USER METHODS
+    @GET("/getUserByPhone/{phone}")
+    fun getUserByPhone(
+        @Path("phone") phone: String
+    ): Call<UserResponse>
+
     @GET("/checkCredencials")
     fun checkCredencials(
         @Query("phone") phone: String,

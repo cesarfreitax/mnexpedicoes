@@ -6,9 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.cesar.mnexpedicoes.R
-import com.cesar.mnexpedicoes.activities.main.presentation.MainActivity
 
-fun AppCompatActivity.loadFragment(fragment: Fragment) {
+fun AppCompatActivity.push(fragment: Fragment) {
     supportFragmentManager.beginTransaction().apply {
         setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).replace(
             R.id.fcv_fragment_container,
@@ -28,8 +27,9 @@ fun Fragment.push(fragmentDestination: Fragment, args: Bundle? = null) {
     transaction.replace(R.id.fcv_fragment_container, fragmentDestination).commit()
 }
 
-fun Fragment.navigateToActivity(activity: AppCompatActivity) {
+fun Fragment.navigateToActivity(activity: AppCompatActivity, data: String? = "") {
     val intent = Intent(requireActivity(), activity::class.java)
+    intent.putExtra("data", data)
     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
     startActivity(intent)
 

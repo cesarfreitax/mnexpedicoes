@@ -19,5 +19,14 @@
         <item name="android:windowSplashScreenBackground" tools:targetApi="s">@color/beige</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:fontFamily">@font/montserrat</item>
+
+        <item name="android:datePickerDialogTheme">@style/CustomDatePickerDialogTheme</item>
+
+    </style>
+
+    <!--  Custom Dialog  -->
+    <style name="CustomDatePickerDialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/pink</item>
+        <item name="android:textColorPrimary">@color/blue</item>
     </style>
 </resources>

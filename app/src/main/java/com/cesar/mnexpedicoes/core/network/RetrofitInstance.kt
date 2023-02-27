@@ -4,7 +4,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitInstance {
-
     private val url by lazy {
         Retrofit.Builder()
             .client(Interceptors.client())
@@ -16,6 +15,4 @@ object RetrofitInstance {
     val apiInterface: ApiInterface by lazy {
         url.create(ApiInterface::class.java)
     }
-
-
 }

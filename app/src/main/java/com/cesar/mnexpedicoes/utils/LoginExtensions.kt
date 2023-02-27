@@ -1,6 +1,6 @@
 package com.cesar.mnexpedicoes.utils
 
-import com.cesar.mnexpedicoes.R
+import androidx.core.content.ContextCompat
 import com.google.android.material.textfield.TextInputEditText
 import java.security.MessageDigest
 
@@ -11,8 +11,6 @@ fun String.hashPassword(): String {
     return digest.fold("") { str, it -> str + "%02x".format(it) }
 }
 
-
-
 fun setTextColor(textInputEditText: TextInputEditText, color: Int) {
-    textInputEditText.setTextColor(textInputEditText.resources.getColor(color))
+    textInputEditText.setTextColor(ContextCompat.getColor(textInputEditText.context, color))
 }

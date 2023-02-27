@@ -1,6 +1,6 @@
 package com.cesar.mnexpedicoes.utils
 
-import com.cesar.mnexpedicoes.fragments.login.register.model.UserResponse
+import com.cesar.mnexpedicoes.features.login.register.model.UserResponse
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 

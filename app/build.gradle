@@ -5,7 +5,6 @@ plugins {
     id 'kotlin-kapt'
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin' version '2.0.1'
     id 'kotlin-parcelize'
-    id 'androidx.navigation.safeargs.kotlin'
     id("com.google.dagger.hilt.android")
     id 'com.google.gms.google-services'
 }
@@ -55,6 +54,7 @@ android {
 }
 
 dependencies {
+    implementation 'com.google.firebase:firebase-common-ktx:20.3.0'
     def nav_version = "2.5.3"
 
     implementation 'androidx.core:core-ktx:1.9.0'
@@ -122,7 +122,8 @@ dependencies {
     implementation 'com.google.android.gms:play-services-auth-api-phone:18.0.1'
 
     // FIREBASE
-    implementation 'com.google.firebase:firebase-auth-ktx:21.1.0'
+    implementation 'com.google.firebase:firebase-auth:21.1.0'
+    implementation 'com.google.android.gms:play-services-auth:20.4.1'
 
     // MASK
     implementation 'com.github.santalu:maskara:1.0.0'

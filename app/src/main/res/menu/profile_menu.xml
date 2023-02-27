@@ -1,26 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="Editar perfil"
+    <item android:title="@string/profile_edit_profile"
         android:id="@+id/edit_profile"
         android:icon="@drawable/ic_edit"
         />
 
-    <item android:title="Favoritos"
+    <item android:title="@string/profile_favorites"
         android:id="@+id/favorites"
         android:icon="@drawable/ic_favorite_filled"/>
 
-    <item android:title="Histórico"
-        android:id="@+id/profile"
+    <item android:title="@string/profile_history"
+        android:id="@+id/history"
         android:icon="@drawable/ic_history"/>
 
-    <item android:title="Cupoms"
+    <item android:title="@string/profile_tickets"
+        android:id="@+id/tickets"
         android:icon="@drawable/ic_cupom"/>
 
-    <item android:title="Ajuda"
+    <item android:title="@string/profile_help"
+        android:id="@+id/help"
         android:icon="@drawable/ic_help"/>
 
-    <item android:title="Sair"
+    <item android:title="@string/profile_logout"
+        android:id="@+id/logout"
         android:icon="@drawable/ic_logout"/>
 
 

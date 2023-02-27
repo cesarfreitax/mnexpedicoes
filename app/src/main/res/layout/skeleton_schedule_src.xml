@@ -5,7 +5,7 @@
         android:layout_width="match_parent"
         android:background="@color/white_off"
         android:layout_height="wrap_content"
-        tools:context=".fragments.schedule.presentation.ScheduleFragment">
+        tools:context=".features.schedule.presentation.ScheduleFragment">
 
         <View
             android:id="@+id/skeleton_schedule_1"
