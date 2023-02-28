@@ -11,11 +11,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.cesar.mnexpedicoes.R
 import com.cesar.mnexpedicoes.activities.main.presentation.MainActivity
 import com.cesar.mnexpedicoes.databinding.FragmentEditProfileBinding
 import com.cesar.mnexpedicoes.features.login.register.model.UserResponse
+import com.cesar.mnexpedicoes.features.profile.editprofile.model.EditProfileUserResponse
 import com.cesar.mnexpedicoes.features.profile.editprofile.validation.InputsValidation
+import com.cesar.mnexpedicoes.features.profile.presentation.ProfileFragment
 import com.cesar.mnexpedicoes.utils.*
 import com.cesar.mnexpedicoes.utils.dialogs.ChoosePhotoDialog
 import java.util.*
@@ -25,6 +28,8 @@ class EditProfileFragment : Fragment() {
     private var _binding: FragmentEditProfileBinding? = null
     private val binding: FragmentEditProfileBinding
         get() = requireNotNull(_binding)
+    private val viewModel: EditProfileFragmentViewModel by viewModels()
+
     private val inputsValidation = InputsValidation()
     private var user: UserResponse? = null
 
@@ -38,14 +43,14 @@ class EditProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        user = arguments?.getSerializable("user") as? UserResponse
+        user = arguments?.getSerializable("user") as? UserResponse ?: UserResponse()
         binding.cdvNext.toggleAlpha(false)
         inputsValidation.setup(binding)
-        setupProfile(user ?: UserResponse())
+        setupProfile()
     }
 
-    private fun setupProfile(user: UserResponse) {
-        user.let {
+    private fun setupProfile() {
+        user?.let {
             if (it.name != "") {
                 binding.tieName.setText(it.name)
             }
@@ -63,13 +68,12 @@ class EditProfileFragment : Fragment() {
         binding.cdvNext.setOnClickListener {
             if (inputsValidation.inputsAreValid) {
                 setProgress()
-                // FAZER O UPDATE DOS DADOS DO USER
-                // TIRAR O DADO DO SHARED PREF PRA NAO LOGAR AUTOMATICAMENTE
+                updateUserByPhone()
             }
         }
 
         setupChoosePhotoDialog()
-        val profileDrawable = getUserProfilePhoto(user.phone.toString())
+        val profileDrawable = getUserProfilePhoto(user?.phone.toString())
         if (profileDrawable != null) {
             binding.imgProfile.layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT
             binding.imgProfile.layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT
@@ -80,6 +84,26 @@ class EditProfileFragment : Fragment() {
 
     }
 
+    private fun updateUserByPhone() {
+        val editProfileUserResponse = EditProfileUserResponse(
+            phone = binding.tiePhone.unMasked,
+            name = binding.tieName.text.toString(),
+            birthday = binding.tieBirthday.text.toString().formatToDateEnUs(),
+            cpf = binding.tieCpf.unMasked
+        )
+        viewModel.updateUserByPhone(editProfileUserResponse) {
+            setProgress()
+            if (viewModel.userUpdatedSuccessfull) {
+                val sharedPref = getSharedPreferences()
+                sharedPref?.edit()?.putString("phone", "")?.apply()
+                makeToast("Conta alterada com sucesso!")
+                push(ProfileFragment())
+            } else {
+                makeToast(getString(R.string.generic_error))
+            }
+        }
+    }
+
     private fun setProgress() {
         binding.imgNext.toggleVisibility()
         binding.pgbLoading.toggleVisibility()
@@ -88,8 +112,8 @@ class EditProfileFragment : Fragment() {
     private fun setupChoosePhotoDialog() {
         binding.cdvProfileImg.setOnClickListener {
             val dialog = ChoosePhotoDialog(
-                {openCamera()},
-                {openGallery()}
+                { openCamera() },
+                { openGallery() }
             )
             dialog.show(parentFragmentManager, "ChoosePhotoDialog")
         }
