@@ -64,7 +64,7 @@ class RegisterFragment : Fragment() {
     private fun showError() {
         setProgress()
         binding.tiePhone.setTextColorSuccess()
-        this.makeToast(getString(R.string.error_register_phone))
+        this.makeToast(getString(R.string.generic_error_register_phone))
     }
 
     private fun postUser() {
@@ -79,7 +79,7 @@ class RegisterFragment : Fragment() {
                 this.makeToast("Conta criada com sucesso!")
                 navigateToHome()
             } else {
-                this.makeToast(getString(R.string.default_error))
+                this.makeToast(getString(R.string.generic_error))
             }
         }
     }

@@ -1,5 +1,4 @@
 <resources>
-
     <!--  App  -->
     <string name="app_name">MN Expedições</string>
     <string name="app_logo">Logo</string>
@@ -19,12 +18,15 @@
     <string name="generic_slogan_message_1">Viva experiências únicas!</string>
     <string name="generic_slogan_message_2">Colecione momentos.</string>
     <string name="generic_ticket_price">R$ %.2f</string>
+    <string name="generic_filtering_for"><![CDATA[Filtrando por <b>%s</b>]]></string>
+    <string name="generic_error_register_phone">Telefone já cadastrado.</string>
 
     <!--  Event  -->
     <string name="event_photo">Foto do evento</string>
     <string name="event_photo_blurred">Foto do evento borrada como background</string>
     <string name="event_description">Descrição do evento</string>
     <string name="event_next_events">Próximos eventos</string>
+    <string name="events_empty_placeholder">Ops... parece que não temos evento nesta categoria.</string>
 
     <!--  Trip  -->
     <string name="trip_description">Descrição da viagem</string>
@@ -42,14 +44,15 @@
 
     <!--  Schedule  -->
     <string name="schedule_event_type">Escolha o tipo de passeio</string>
-    <string name="generic_filtering_for"><![CDATA[Filtrando por <b>%s</b>]]></string>
+    <string name="schedule_main_slogan">Fazendo a vida valer a pena.</string>
+
+    <!--  Main  -->
     <string name="main_home">Início</string>
     <string name="main_schedule">Agenda</string>
     <string name="main_back">Voltar</string>
-    <string name="events_empty_placeholder">Ops... parece que não temos evento nesta categoria.</string>
     <string name="main_profile">Perfil</string>
-    <string name="default_error">Ocorreu um erro! Tente novamente.</string>
-    <string name="error_register_phone">Telefone já cadastrado.</string>
+
+    <!--  Profile  -->
     <string name="profile_camera">CÂMERA</string>
     <string name="profile_gallery">GALERIA</string>
     <string name="profile_edit_profile">Editar perfil</string>
@@ -58,6 +61,9 @@
     <string name="profile_tickets">Cupoms</string>
     <string name="profile_help">Ajuda</string>
     <string name="profile_logout">Sair</string>
+    <string name="profile_profile_image">Imagem de perfil</string>
+
+    <!--  Register  -->
     <string name="register_create_account">Crie sua conta</string>
     <string name="register_fullname">Nome completo</string>
     <string name="register_phone">Telefone</string>
@@ -65,7 +71,8 @@
     <string name="register_confirm_password">Confirme a sua senha</string>
     <string name="register_show_passwords">Visualizar senhas</string>
     <string name="register_next">Próximo</string>
-    <string name="profile_profile_image">Imagem de perfil</string>
+
+    <!--  Login  -->
     <string name="login_app_logo">Logo do aplicativo</string>
     <string name="login_explore_new_places">Explore novos lugares com a gente</string>
     <string name="login_keep_login">Manter conectado</string>
@@ -76,9 +83,10 @@
     <string name="login_or">ou</string>
     <string name="login_google_icon">Icone do google</string>
     <string name="login_google_sigin">Entrar com o Google</string>
+
+    <!--  Edit Profile  -->
     <string name="editprofile_birthday">Data de nascimento</string>
     <string name="editprofile_cpf">CPF</string>
     <string name="editprofile_change_password">Quero alterar minha senha</string>
-    <string name="schedule_main_slogan">Fazendo a vida valer a pena.</string>
-
+    <string name="generic_error">Erro insperado. Tente novamente.</string>
 </resources>
