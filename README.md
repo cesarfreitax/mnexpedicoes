@@ -19,16 +19,12 @@ The app offers the following features:
 
 ____
 
-#### ⚙️ Dependencies:
+#### Dependencies:
 
 • [Android Youtube Player](https://github.com/PierfrancescoSoffritti/android-youtube-player)
-
 • [Generic Adapter](https://github.com/e-nicolas/GenericAdapter)
-
 • [Retrofit](https://square.github.io/retrofit/)
-
 • [Gson](https://github.com/google/gson)
-
 • [Gson-converter](https://github.com/square/retrofit/tree/master/retrofit-converters/gson)
 ____
 
