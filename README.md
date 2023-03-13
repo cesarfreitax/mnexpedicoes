@@ -11,6 +11,7 @@ ____
 The app offers the following features:
 
 - Login system with SMS confirmation
+- Profile customization
 - View a list of events
 - Search for specific event
 - Filter event by type
