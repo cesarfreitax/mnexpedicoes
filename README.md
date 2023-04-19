@@ -1,4 +1,4 @@
-# App MNExpedições #
+## App MNExpedições
 
 ### Overview:
 *This is a Kotlin application for an event platform.*
